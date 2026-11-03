@@ -12,7 +12,7 @@
     // is free and does not count as a Worker request. Unlisted paths fall back to
     // index.html (SPA) without running the Worker either. Add a pattern here when
     // you add a new top-level page route.
-    "run_worker_first": ["/", "/index.html", "/blog", "/blog/*", "/contact"],
+    "run_worker_first": ["/", "/index.html", "/blog", "/blog/*", "/contact", "/about", "/privacy"],
     "not_found_handling": "single-page-application"
   },
   "routes": [{ "pattern": "kentshen.com", "custom_domain": true }]

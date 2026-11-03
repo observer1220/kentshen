@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kentshen.com/sitemap.xml

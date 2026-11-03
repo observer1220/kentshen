@@ -119,6 +119,26 @@ describe("contact flow", () => {
   });
 });
 
+describe("about and privacy pages", () => {
+  it("are linked from the footer and open in place", () => {
+    render(<App />);
+    fireEvent.click(document.querySelector('.foot a[href="/privacy"]'));
+    expect(window.location.pathname).toBe("/privacy");
+    expect(document.querySelector(".post-title").textContent).toBe("隱私權政策");
+    expect(document.title).toBe("隱私權政策 — Kent Shen's Workspace");
+
+    fireEvent.click(document.querySelector('.foot a[href="/about"]'));
+    expect(window.location.pathname).toBe("/about");
+    expect(document.querySelector(".post-title").textContent).toBe("關於");
+  });
+
+  it("load directly from their URL", () => {
+    window.history.pushState({}, "", "/privacy");
+    render(<App />);
+    expect(screen.getByText(/Google AdSense 顯示廣告/)).toBeTruthy();
+  });
+});
+
 describe("browser title", () => {
   it("is Kent Shen's Workspace on the home page", () => {
     render(<App />);

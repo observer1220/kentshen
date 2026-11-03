@@ -6,6 +6,7 @@
   },
   "ui": {
     "aboutLink": "關於",
+    "privacyLink": "隱私權政策",
     "statusLabels": {
       "live": "已上線",
       "beta": "測試中",

@@ -1,11 +1,15 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
-const STATIC_ROUTES = ["/", "/blog", "/contact"];
+const STATIC_ROUTES = ["/", "/blog", "/contact", "/about", "/privacy"];
 
-function currentPath() {
-  const p = window.location.pathname.replace(/\/+$/, "") || "/";
+export function normalizePath(pathname) {
+  const p = pathname.replace(/\/+$/, "") || "/";
   if (STATIC_ROUTES.includes(p) || /^\/blog\/[^/]+$/.test(p)) return p;
   return "/";
+}
+
+function currentPath() {
+  return normalizePath(window.location.pathname);
 }
 
 function scrollToHash() {
@@ -17,8 +21,10 @@ function scrollToHash() {
 
 const RouterContext = createContext(null);
 
-export function RouterProvider({ children }) {
-  const [path, setPath] = useState(currentPath);
+// initialPath is only passed when pre-rendering at build time (no window there);
+// in the browser the path always comes from the address bar.
+export function RouterProvider({ initialPath, children }) {
+  const [path, setPath] = useState(() => (initialPath ? normalizePath(initialPath) : currentPath()));
 
   useEffect(() => {
     const onPop = () => setPath(currentPath());

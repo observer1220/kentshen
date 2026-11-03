@@ -6,6 +6,7 @@
   },
   "ui": {
     "aboutLink": "about",
+    "privacyLink": "privacy",
     "statusLabels": {
       "live": "Live",
       "beta": "Beta",

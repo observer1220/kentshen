@@ -18,6 +18,7 @@ if (typeof window !== "undefined") {
 }
 
 function isStandalone() {
+  if (typeof window === "undefined") return true; // pre-rendering at build time: render nothing
   return Boolean(window.matchMedia?.("(display-mode: standalone)").matches || window.navigator.standalone);
 }
 

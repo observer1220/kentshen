@@ -166,6 +166,9 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- footer ---------- */
 .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 24px;border-top:2px solid var(--ink);margin-top:clamp(40px,6vw,80px);padding-block:12px 28px}
+.foot-links{display:inline-flex;gap:16px}
+.foot-links a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink)}
+.foot-links a:hover{border-bottom-color:var(--red)}
 
 .install{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
 .install-btn{

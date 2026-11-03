@@ -28,6 +28,24 @@ export const posts = Object.entries(files)
   })
   .sort((a, b) => (a.date < b.date ? 1 : -1));
 
+// Standalone pages (about, privacy) are Markdown too: content/pages/<slug>.md
+const pageFiles = import.meta.glob("../../content/pages/*.md", { query: "?raw", import: "default", eager: true });
+
+export const pages = Object.entries(pageFiles).map(([path, raw]) => {
+  const { meta, body } = parseFrontmatter(raw);
+  return {
+    slug: path.split("/").pop().replace(/\.md$/, ""),
+    title: meta.title || "(untitled)",
+    summary: meta.summary || "",
+    updated: meta.updated || "",
+    body,
+  };
+});
+
+export function getPage(slug) {
+  return pages.find((p) => p.slug === slug) || null;
+}
+
 export function getPost(slug) {
   return posts.find((p) => p.slug === slug) || null;
 }

@@ -54,8 +54,9 @@ describe("blog", () => {
     expect(document.querySelectorAll(".postrow").length).toBeGreaterThan(0);
     expect(document.querySelector(".postrow time").textContent).toMatch(/^\d{4}\.\d{2}\.\d{2}$/);
 
-    fireEvent.click(document.querySelector(".postrow"));
-    expect(window.location.pathname).toMatch(/^\/blog\/[^/]+$/);
+    // Open the post that carries embeds, not just whichever is newest.
+    fireEvent.click(document.querySelector('.postrow[href="/blog/six-tools-one-account"]'));
+    expect(window.location.pathname).toBe("/blog/six-tools-one-account");
     expect(document.querySelector(".post-title")).not.toBeNull();
     expect(document.querySelector(".prose h2")).not.toBeNull();
     expect(document.querySelector(".embed-threads blockquote")).not.toBeNull();

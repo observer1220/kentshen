@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>方案 D · ASCII 布告欄 — Kent Shen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+/* 方案 D「ASCII 布告欄」：90 年代 DOS / BBS 風。藍底、16 色、雙線框、ASCII 藝術。 */
+:root{
+  --bg:#0000aa; --bg2:#00008a; --fg:#c8c8ff; --white:#fff; --yel:#ffff55; --cyan:#55ffff;
+  --mag:#ff55ff; --grn:#55ff55; --grey:#aaaaaa; --black:#000;
+  --art:"Menlo","Consolas","DejaVu Sans Mono","Courier New",monospace;
+  --ui:"VT323","Menlo",monospace;
+  --body:"Noto Sans TC","PingFang TC",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:56px}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.8 var(--body);padding-bottom:44px;overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;
+  background:repeating-linear-gradient(to bottom,rgba(0,0,0,.14) 0 1px,transparent 1px 3px);mix-blend-mode:multiply}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1000px;margin-inline:auto;padding-inline:16px}
+.ui{font-family:var(--ui);letter-spacing:.02em}
+
+/* 頂部選單列 */
+.menubar{position:sticky;top:0;z-index:50;background:var(--grey);color:var(--black);border-bottom:2px solid var(--black)}
+.menubar .wrap{display:flex;align-items:center;gap:4px;height:40px;font-family:var(--ui);font-size:22px}
+.menubar b{background:var(--black);color:var(--grey);padding:0 10px;margin-right:8px;font-weight:400}
+.menubar a{padding:0 10px;line-height:36px}
+.menubar a u{color:#a00;text-decoration:none}
+.menubar a:hover,.menubar a.on{background:var(--black);color:var(--grey)}
+.menubar .clock{margin-left:auto;padding-right:4px}
+@media(max-width:560px){.menubar .clock{display:none}.menubar a{padding:0 7px}}
+
+/* 橫幅 */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center;padding-block:40px 24px}
+@media(max-width:820px){.hero{grid-template-columns:1fr}}
+pre{margin:0;font-family:var(--art);white-space:pre;overflow:hidden}
+.banner{font-size:clamp(10px,3.9vw,26px);line-height:1.04;color:var(--white);text-shadow:2px 2px 0 var(--black)}
+.banner .s{color:var(--cyan)}
+.mount{font-size:clamp(10px,2.6vw,15px);line-height:1.15;color:var(--cyan)}
+.mount .y{color:var(--yel)} .mount .w{color:var(--white)} .mount .g{color:var(--grn)}
+.prompt{font-family:var(--ui);font-size:24px;color:var(--yel);margin:20px 0 4px}
+.prompt .caret{display:inline-block;width:.6em;height:1em;background:var(--yel);vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.readme{max-width:60ch;color:var(--fg)}
+.readme strong{color:var(--white);font-weight:700}
+.readme .hl{background:var(--yel);color:var(--black);padding:0 4px}
+
+/* 分隔 */
+.rule{display:flex;align-items:center;gap:12px;margin:56px 0 20px;font-family:var(--ui);font-size:26px;color:var(--white)}
+.rule::before,.rule::after{content:"";flex:1;height:6px;border-block:2px solid var(--cyan)}
+.rule span{background:var(--bg);padding-inline:4px;color:var(--yel)}
+.rule small{font-size:19px;color:var(--cyan);margin-left:6px}
+
+/* 視窗 */
+.win{background:var(--bg);border:3px double var(--white);box-shadow:8px 8px 0 var(--black);position:relative}
+.win>.tt{display:flex;align-items:center;gap:8px;background:var(--grey);color:var(--black);padding:0 8px;font-family:var(--ui);font-size:21px;line-height:30px;border-bottom:2px solid var(--black)}
+.win>.tt i{font-style:normal;background:var(--black);color:var(--grey);padding:0 6px;line-height:20px}
+.win>.tt span{margin-left:auto;color:#555}
+.win-b{padding:14px 16px 16px}
+
+/* 作品 */
+.works{display:grid;grid-template-columns:repeat(2,1fr);gap:30px}
+@media(max-width:760px){.works{grid-template-columns:1fr}}
+.work .shot{display:block;position:relative;background:#2fc8c8;border:2px solid var(--black);overflow:hidden;aspect-ratio:16/10}
+.work .shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;filter:grayscale(1) contrast(1.35);mix-blend-mode:multiply;transition:filter .2s}
+.work .shot::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(0,0,0,.2) 0 1px,transparent 1px 3px)}
+.work:hover .shot img{filter:grayscale(0) contrast(1);mix-blend-mode:normal}
+.work h3{margin:12px 0 2px;font:400 28px/1.1 var(--ui);color:var(--yel)}
+.work p{margin:0 0 12px;font-size:14.5px;line-height:1.7}
+.tags{font-family:var(--ui);font-size:19px;color:var(--cyan)}
+.btn{display:inline-block;font-family:var(--ui);font-size:22px;line-height:1;padding:6px 12px 5px;background:var(--grey);color:var(--black);box-shadow:4px 4px 0 var(--black);border:0;cursor:pointer}
+.btn:hover{background:var(--yel)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--black)}
+.btn u{text-decoration:none;color:#a00}
+
+/* 文章清單 */
+.dir{font-family:var(--ui);font-size:22px;line-height:1.35}
+.dir .head{color:var(--cyan);padding:2px 8px;border-bottom:2px dashed var(--cyan);display:grid;grid-template-columns:104px 70px 1fr;gap:12px}
+.dir a{display:grid;grid-template-columns:104px 70px 1fr;gap:12px;padding:5px 8px;color:var(--white)}
+.dir a:hover{background:var(--cyan);color:var(--black)}
+.dir a em{font-style:normal;color:var(--grn)} .dir a:hover em{color:var(--black)}
+.dir a .t{font-family:var(--body);font-size:16px;font-weight:500;line-height:1.5}
+.dir .foot{padding:6px 8px;color:var(--grey);border-top:2px dashed var(--cyan);margin-top:4px}
+@media(max-width:600px){.dir .head,.dir a{grid-template-columns:90px 1fr}.dir .head span:nth-child(2),.dir a em{display:none}}
+
+/* 文章 */
+.read .win-b{padding:0}
+.progress{position:sticky;top:40px;z-index:5;background:var(--bg2);border-bottom:2px solid var(--cyan);font-family:var(--art);font-size:14px;padding:4px 16px;color:var(--cyan);display:flex;justify-content:space-between;gap:8px}
+.progress b{color:var(--yel);font-weight:400}
+article{padding:24px clamp(16px,4vw,48px) 12px;max-width:760px;margin-inline:auto}
+article h1{font:400 clamp(32px,6vw,52px)/1.05 var(--ui);color:var(--white);margin:0 0 6px}
+article .meta{font-family:var(--ui);font-size:20px;color:var(--cyan);margin-bottom:22px}
+article h2{font:400 28px/1.2 var(--ui);color:var(--yel);margin:34px 0 8px}
+article h2::before{content:"## ";color:var(--mag)}
+article p{margin:0 0 16px;font-size:17px;line-height:2}
+article blockquote{margin:22px 0;padding:6px 0 6px 18px;border-left:4px double var(--yel);color:var(--white);font-weight:500}
+article code{font-family:var(--art);font-size:.85em;background:var(--black);color:var(--grn);padding:1px 6px}
+article ul{margin:0 0 16px;padding-left:0;list-style:none}
+article li{padding-left:2.2em;position:relative;font-size:17px;line-height:1.95}
+article li::before{content:"[+]";position:absolute;left:0;font-family:var(--art);font-size:14px;color:var(--grn);top:2px}
+.endnote{margin:28px 0 0;border-top:3px double var(--white);padding:18px 0 24px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.endnote p{margin:0;font-size:16px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+
+/* 聯絡對話框 */
+.dialog{max-width:640px;margin-inline:auto}
+.dialog .win-b{text-align:center;padding:26px 18px 28px}
+.dialog h2{font:400 clamp(30px,6vw,44px)/1.1 var(--ui);color:var(--white);margin:0 0 8px}
+.dialog p{margin:0 auto 22px;max-width:44ch}
+.handle{font-family:var(--art);font-size:13px;color:var(--grey);margin-top:16px}
+.btns.c{justify-content:center}
+.btn.big{font-size:28px;padding:10px 20px 8px}
+.btn.th{background:var(--white)} .btn.ig{background:var(--mag)}
+.btn.th:hover,.btn.ig:hover{background:var(--yel)}
+
+footer{margin-top:64px;padding-block:20px;border-top:3px double var(--white);font-family:var(--ui);font-size:20px;color:var(--grey);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+footer a:hover{color:var(--yel)}
+
+/* 底部狀態列 */
+.status{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--grey);color:var(--black);border-top:2px solid var(--black);font-family:var(--ui);font-size:21px;line-height:34px}
+.status .wrap{display:flex;gap:4px;overflow:hidden;white-space:nowrap}
+.status a{padding:0 10px}
+.status a b{color:#a00;font-weight:400}
+.status a:hover{background:var(--black);color:var(--grey)}
+.status .sp{margin-left:auto;color:#555;padding-right:4px}
+@media(max-width:600px){.status .sp{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.caret{animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="menubar">
+  <div class="wrap">
+    <b>KENT.SHEN</b>
+    <a href="#works" data-k="1"><u>作</u>品</a>
+    <a href="#posts" data-k="2"><u>文</u>章</a>
+    <a href="#contact" data-k="3"><u>聯</u>絡</a>
+    <span class="clock" id="clock">--:--:--</span>
+  </div>
+</div>
+
+<main class="wrap">
+
+<section class="hero" aria-label="自我介紹">
+  <div>
+<pre class="banner" aria-label="KENT SHEN">██╗  ██╗███████╗███╗   ██╗████████╗
+██║ ██╔╝██╔════╝████╗  ██║╚══██╔══╝
+█████╔╝ █████╗  ██╔██╗ ██║   ██║
+██╔═██╗ ██╔══╝  ██║╚██╗██║   ██║
+██║  ██╗███████╗██║ ╚████║   ██║
+╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝   ╚═╝
+<span class="s">███████╗██╗  ██╗███████╗███╗   ██╗
+██╔════╝██║  ██║██╔════╝████╗  ██║
+███████╗███████║█████╗  ██╔██╗ ██║
+╚════██║██╔══██║██╔══╝  ██║╚██╗██║
+███████║██║  ██║███████╗██║ ╚████║
+╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝</span></pre>
+    <div class="prompt ui">C:\KENT&gt; type README.TXT<span class="caret"></span></div>
+    <p class="readme">我是 <strong>Kent</strong>，住在高雄。一個人設計、寫程式、上線，做的都是<span class="hl">小而完整</span>的工具。這裡收著 <strong>7</strong> 件作品，以及 <strong>27</strong> 篇做的過程中踩過的坑與取捨。</p>
+  </div>
+<pre class="mount" aria-hidden="true"><span class="y">   .  *        .          *</span>
+<span class="y">        *            .       </span><span class="w">*</span>
+                 <span class="w">/\</span>            <span class="y">.</span>
+          <span class="w">/\</span>    <span class="w">/  \</span>   <span class="w">/\</span>
+         /  \  /    \ /  \     <span class="y">玉山</span>
+    <span class="w">/\</span>  /    \/  /\  \    \<span class="y">&lt;--3,952m</span>
+   /  \/  /\    /  \  \    \
+  /    \ /  \  / /\ \  \ /\ \
+ /  /\  \    \/ /  \ \  /  \ \
+/__/  \__\____/_/____\_\/____\_\
+<span class="g">^^ ^^^ ^^  ^^^  ^^ ^^  ^^^ ^^ ^^^ ^^</span>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</pre>
+</section>
+
+<!-- 作品 -->
+<div class="rule" id="works"><span>WORKS.DIR</span><small>7 個檔案</small></div>
+<section class="works" aria-label="作品">
+  <article class="win work"><div class="tt"><i>■</i>01 TAIWAN-BAIYUE.EXE<span>網站</span></div><div class="win-b">
+    <a class="shot" href="https://taiwan-baiyue.kentshen.com/"><img src="/thumbnails/taiwan-baiyue.png" alt="台灣百岳地圖介面" loading="lazy" /></a>
+    <h3>台灣百岳地圖</h3><p>Leaflet 地圖版的百岳查詢工具：衛星影像、篩選面板與登山準備清單。</p>
+    <a class="btn" href="https://taiwan-baiyue.kentshen.com/"><u>O</u>pen ▸</a></div></article>
+  <article class="win work"><div class="tt"><i>■</i>02 TW-STOCK.EXE<span>網站</span></div><div class="win-b">
+    <a class="shot" href="https://tw-stock-report.observer1220.workers.dev/"><img src="/thumbnails/tw-stock-report.png" alt="台股報表介面" loading="lazy" /></a>
+    <h3>台股報表</h3><p>一鍵抓取台股與美股基本面數據，自動算出投資評分，支援 CSV／JSON 匯出。</p>
+    <a class="btn" href="https://tw-stock-report.observer1220.workers.dev/"><u>O</u>pen ▸</a></div></article>
+  <article class="win work"><div class="tt"><i>■</i>03 UNDERCURRENT.EXE<span>網站</span></div><div class="win-b">
+    <a class="shot" href="https://undercurrent.observer1220.workers.dev/"><img src="/thumbnails/undercurrent.png" alt="Undercurrent 介面" loading="lazy" /></a>
+    <h3>Undercurrent</h3><p>公司與法人關係圖譜，整合官方登記資料，做盡職調查的起點。</p>
+    <a class="btn" href="https://undercurrent.observer1220.workers.dev/"><u>O</u>pen ▸</a></div></article>
+  <article class="win work"><div class="tt"><i>■</i>04 ELSEWHERE.EXE<span>網站</span></div><div class="win-b">
+    <a class="shot" href="https://elsewhere.observer1220.workers.dev/"><img src="/thumbnails/elsewhere.png" alt="Elsewhere 介面" loading="lazy" /></a>
+    <h3>Elsewhere</h3><p>AI 行程規劃，涵蓋 171 個國家，用 3D 地球選目的地。</p>
+    <a class="btn" href="https://elsewhere.observer1220.workers.dev/"><u>O</u>pen ▸</a></div></article>
+  <article class="win work"><div class="tt"><i>■</i>05 VEIL.EXE<span>網站</span></div><div class="win-b">
+    <a class="shot" href="https://veil.observer1220.workers.dev/"><img src="/thumbnails/veil.png" alt="Veil 介面" loading="lazy" /></a>
+    <h3>Veil</h3><p>貼給 AI 之前，先把密碼、私鑰與個資遮起來。內容只在你的瀏覽器處理。</p>
+    <a class="btn" href="https://veil.observer1220.workers.dev/"><u>O</u>pen ▸</a></div></article>
+  <article class="win work"><div class="tt"><i>■</i>06 LYRIC-SYNC.EXE<span>Chrome 外掛</span></div><div class="win-b">
+    <a class="shot" href="https://lyric-sync.observer1220.workers.dev/"><img src="/thumbnails/lyric-sync.png" alt="Lyric Sync 介面" loading="lazy" /></a>
+    <h3>Lyric Sync</h3><p>YouTube 日文歌曲的浮動歌詞面板：原文、假名、中文與逐字跑詞。</p>
+    <a class="btn" href="https://lyric-sync.observer1220.workers.dev/"><u>O</u>pen ▸</a></div></article>
+  <article class="win work"><div class="tt"><i>■</i>07 LATENT.EXE<span>網站</span></div><div class="win-b">
+    <a class="shot" href="https://latent.kentshen.com/"><img src="/thumbnails/latent.png" alt="Latent 介面" loading="lazy" /></a>
+    <h3>Latent</h3><p>照片與影片依時間、地點自動分組，所有處理都在瀏覽器完成。</p>
+    <a class="btn" href="https://latent.kentshen.com/"><u>O</u>pen ▸</a></div></article>
+</section>
+
+<!-- 文章 -->
+<div class="rule" id="posts"><span>BLOG\*.MD</span><small>27 個檔案</small></div>
+<section class="win" aria-label="文章列表">
+  <div class="tt"><i>■</i>C:\KENT\BLOG&gt; dir /o-d<span>最新優先</span></div>
+  <div class="win-b dir">
+    <div class="head"><span>DATE</span><span>READ</span><span>TITLE</span></div>
+    <a href="#read"><span>2026-11-05</span><em>4 min</em><span class="t">前端的資料，真的保護得了嗎？一個誠實的說明</span></a>
+    <a href="#read"><span>2026-11-04</span><em>5 min</em><span class="t">公開資料可以隨便用嗎？做資料整合工具時我思考的幾件事</span></a>
+    <a href="#read"><span>2026-11-04</span><em>4 min</em><span class="t">跟 AI 一起寫程式：我怎麼用一份專案規則檔讓它不踩線</span></a>
+    <a href="#read"><span>2026-11-03</span><em>5 min</em><span class="t">資料庫 migration 要寫成「重跑也安全」：冪等性的實務做法</span></a>
+    <a href="#read"><span>2026-11-02</span><em>4 min</em><span class="t">PWA 離線功能最容易踩的坑：Service Worker 的快取為什麼更新不了</span></a>
+    <a href="#read"><span>2026-11-01</span><em>6 min</em><span class="t">不用 CMS 也能經營部落格：把 Markdown 檔案當成資料庫</span></a>
+    <a href="#read"><span>2026-10-18</span><em>5 min</em><span class="t">用 AI 寫程式也要顧資安：我給自己的 10 項檢查表</span></a>
+    <a href="#read"><span>2026-10-13</span><em>4 min</em><span class="t">為什麼我把登山地圖的即時天氣拿掉了</span></a>
+    <div class="foot">27 File(s) · 顯示最新 8 篇 · <a href="#" style="color:var(--yel)">查看全部 ▸</a></div>
+  </div>
+</section>
+
+<!-- 文章內頁 -->
+<section class="win read" id="read" style="margin-top:44px" aria-label="文章內頁">
+  <div class="tt"><i>■</i>READ.EXE — 2026-11-05<span>前端 / 資安</span></div>
+  <div class="progress" aria-hidden="true"><span>READING</span><span id="bar">[░░░░░░░░░░░░░░░░░░░░]</span><b id="pct">0%</b></div>
+  <div class="win-b">
+  <article>
+    <h1>前端的資料，真的保護得了嗎？</h1>
+    <div class="meta">2026-11-05 · 資安 · 前端 · 台灣百岳地圖</div>
+    <p>台灣百岳地圖上的山岳資料，不是放在網站的靜態檔案裡，而是透過一支後端 API 提供。有人問過我：這樣是不是就保護了資料？我的答案是：只保護了一部分，而且要誠實說清楚是哪一部分。</p>
+    <h2>這樣做有什麼效果</h2>
+    <ul>
+      <li>資料不再是一個「一個網址就找得到」的檔案。</li>
+      <li>不會被搜尋引擎當成獨立的頁面索引。</li>
+      <li>不會被隨手寫的爬蟲撿走。</li>
+    </ul>
+    <h2>這樣做沒有什麼效果</h2>
+    <p>只要地圖需要顯示這些資料，瀏覽器就一定會收到完整的內容。這是前端網站的物理限制：</p>
+    <blockquote>凡是要顯示給使用者的資料，使用者的瀏覽器就必然拿得到。</blockquote>
+    <p>所以這個做法提高的是「隨手複製」的門檻，而不是做到「真正無法取得」。我在專案的說明裡也是這麼寫的，沒有把它說成資料保護。</p>
+    <h2>為什麼不乾脆加密</h2>
+    <p>解密的金鑰也得放在前端，否則瀏覽器無法解密。金鑰一旦在前端，加密就只是增加閱讀的麻煩。真正能保護資料的做法只有一種：<code>不把它送到瀏覽器</code>。</p>
+    <div class="endnote">
+      <p>讀完想聊聊？<br />歡迎直接傳訊息給我。</p>
+      <div class="btns"><a class="btn th" href="https://www.threads.com/@kentshen77" rel="noopener"><u>T</u>hreads</a><a class="btn ig" href="https://www.instagram.com/YOUR_IG_HANDLE/" rel="noopener"><u>I</u>nstagram</a></div>
+    </div>
+  </article>
+  </div>
+</section>
+
+<!-- 聯絡 -->
+<div class="rule" id="contact"><span>CONTACT.COM</span></div>
+<section class="win dialog" aria-label="聯絡">
+  <div class="tt"><i>■</i>SEND_MESSAGE<span>? 說明</span></div>
+  <div class="win-b">
+    <h2>來聊聊吧</h2>
+    <p>合作、提問、發現 bug，或只是想打聲招呼，都可以直接私訊我。我通常一兩天內回覆。</p>
+    <div class="btns c">
+      <a class="btn big th" href="https://www.threads.com/@kentshen77" rel="noopener">[ <u>T</u>hreads ]</a>
+      <a class="btn big ig" href="https://www.instagram.com/YOUR_IG_HANDLE/" rel="noopener">[ <u>I</u>nstagram ]</a>
+    </div>
+    <div class="handle">@kentshen77 · @YOUR_IG_HANDLE</div>
+  </div>
+</section>
+
+<footer><span>© 2026 KENT SHEN · KAOHSIUNG</span><span><a href="#">關於</a> · <a href="#">隱私權政策</a> · <a href="#">RSS</a></span></footer>
+</main>
+
+<div class="status"><div class="wrap">
+  <a href="#works"><b>1</b>作品</a><a href="#posts"><b>2</b>文章</a><a href="#contact"><b>3</b>聯絡</a><a href="#"><b>0</b>回頂端</a><span class="sp">方案 D · ASCII 布告欄</span>
+</div></div>
+
+<script>
+(function(){
+  var clock=document.getElementById('clock');
+  function tick(){var d=new Date();clock.textContent=[d.getHours(),d.getMinutes(),d.getSeconds()].map(function(n){return String(n).padStart(2,'0')}).join(':')}
+  tick();setInterval(tick,1000);
+
+  var read=document.getElementById('read'),bar=document.getElementById('bar'),pct=document.getElementById('pct');
+  function prog(){
+    var r=read.getBoundingClientRect(),h=r.height-window.innerHeight*.6;
+    var p=Math.max(0,Math.min(1,(-r.top+window.innerHeight*.3)/h));
+    var n=Math.round(p*20);
+    bar.textContent='['+'█'.repeat(n)+'░'.repeat(20-n)+']';
+    pct.textContent=Math.round(p*100)+'%';
+  }
+  addEventListener('scroll',prog,{passive:true});prog();
+
+  var map={'1':'#works','2':'#posts','3':'#contact','0':'#'};
+  addEventListener('keydown',function(e){
+    if(e.metaKey||e.ctrlKey||e.altKey)return;
+    var t=map[e.key];
+    if(t){if(t==='#')window.scrollTo({top:0});else document.querySelector(t).scrollIntoView();}
+  });
+
+  var links=[].slice.call(document.querySelectorAll('.menubar a'));
+  var secs=['works','posts','contact'].map(function(id){return document.getElementById(id)});
+  function spy(){
+    var y=scrollY+120,cur=-1;
+    secs.forEach(function(s,i){if(s.offsetTop<=y)cur=i});
+    links.forEach(function(a,i){a.classList.toggle('on',i===cur)});
+  }
+  addEventListener('scroll',spy,{passive:true});spy();
+})();
+</script>
+</body>
+</html>

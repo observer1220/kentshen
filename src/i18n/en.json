@@ -25,13 +25,29 @@
       }
     },
     "colophon": "Set in Noto Serif TC & Zen Kaku Gothic New. Built by hand, no framework.",
-    "nav": { "works": "Works", "blog": "Blog", "contact": "Contact" },
+    "nav": {
+      "works": "Works",
+      "blog": "Blog",
+      "contact": "Contact"
+    },
     "hero": {
-      "facts": { "works": "Works", "deploy": "Hosting", "time": "Kaohsiung time" }
+      "facts": {
+        "works": "Works",
+        "deploy": "Hosting",
+        "time": "Kaohsiung time"
+      }
     },
     "home": {
-      "blog": { "title": "Blog", "desc": "Lessons, design trade-offs, and notes from building.", "all": "All posts →" },
-      "contact": { "title": "Contact", "desc": "Feedback, collaboration, or custom work.", "email": "observer1220@gmail.com", "form": "Use the contact form →" }
+      "blog": {
+        "title": "Blog",
+        "desc": "Lessons, design trade-offs, and notes from building.",
+        "all": "All posts →"
+      },
+      "contact": {
+        "title": "Contact",
+        "desc": "Feedback, collaboration, or custom work — send me a message.",
+        "cta": "Contact page →"
+      }
     },
     "works": {
       "heading": "Works",
@@ -45,21 +61,16 @@
       "backToList": "← All posts",
       "notFound": "Post not found"
     },
-    "install": { "button": "Add to Home Screen", "ios": "In Safari, tap Share, then Add to Home Screen.", "close": "Close" },
+    "install": {
+      "button": "Add to Home Screen",
+      "ios": "In Safari, tap Share, then Add to Home Screen.",
+      "close": "Close"
+    },
     "feedbackLabel": "User feedback",
     "threadsFallback": "View on Threads →",
     "contact": {
       "heading": "Contact",
-      "categoryLabel": "Type",
-      "categoryOptions": {
-        "feedback": "Product Feedback",
-        "custom": "Custom Development"
-      },
-      "nameLabel": "Name",
-      "phoneLabel": "Phone",
-      "emailLabel": "Email",
-      "descLabel": "Description",
-      "submitLabel": "Send",
+      "lead": "Feedback, collaboration, custom work, or just hello — message me directly.",
       "backLabel": "← Back"
     }
   },

@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>方案 E · 海報 — Kent Shen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet" />
+<style>
+/* 方案 E「海報」：新粗獷主義。粗黑框、硬陰影、高飽和色塊、超大標題。 */
+:root{
+  --ink:#111; --paper:#fff4cf; --white:#fff;
+  --yellow:#ffe14d; --pink:#ff8fc7; --blue:#7aa2ff; --green:#4ee3a0; --orange:#ff9a4d; --violet:#b69cff;
+  --bw:3px; --sh:6px 6px 0 var(--ink);
+  --font:"Bricolage Grotesque","Noto Sans TC","PingFang TC",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;color:var(--ink);font:500 16px/1.75 "Noto Sans TC","Bricolage Grotesque",sans-serif;
+  background:var(--paper) radial-gradient(rgba(17,17,17,.16) 1.2px,transparent 1.4px) 0 0/20px 20px;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--font);font-weight:800;margin:0;letter-spacing:-.02em}
+
+/* 跑馬燈 */
+.ticker{background:var(--ink);color:var(--yellow);border-bottom:var(--bw) solid var(--ink);overflow:hidden;white-space:nowrap;font:800 14px/34px var(--font);letter-spacing:.08em}
+.ticker div{display:inline-block;padding-left:100%;animation:run 28s linear infinite}
+@keyframes run{to{transform:translateX(-100%)}}
+
+/* 導覽 */
+.nav{position:sticky;top:0;z-index:40;background:var(--white);border-bottom:var(--bw) solid var(--ink)}
+.nav .wrap{display:flex;align-items:center;gap:10px;height:62px}
+.logo{font:800 22px/1 var(--font);background:var(--yellow);border:var(--bw) solid var(--ink);padding:6px 10px;box-shadow:3px 3px 0 var(--ink);transform:rotate(-2deg)}
+.nav nav{margin-left:auto;display:flex;gap:8px}
+.nav nav a{font-weight:900;font-size:15px;border:var(--bw) solid var(--ink);padding:5px 12px;background:var(--white);box-shadow:3px 3px 0 var(--ink);transition:transform .1s,box-shadow .1s}
+.nav nav a:hover{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink);background:var(--pink)}
+@media(max-width:480px){.logo{font-size:18px}.nav nav a{padding:4px 8px;font-size:14px}}
+
+/* Hero */
+.hero{position:relative;padding-block:56px 40px}
+.hero h1{font-size:clamp(46px,10.5vw,138px);line-height:.98;font-weight:800;letter-spacing:-.045em}
+.hero h1 .l2{display:block}
+mark{background:linear-gradient(transparent 12%,var(--yellow) 12% 92%,transparent 92%);color:inherit;padding:0 .08em}
+mark.p{background:linear-gradient(transparent 12%,var(--pink) 12% 92%,transparent 92%)}
+mark.g{background:linear-gradient(transparent 12%,var(--green) 12% 92%,transparent 92%)}
+.hero p{max-width:34em;font-size:18px;margin:22px 0 0;font-weight:700}
+.badge{position:absolute;right:2%;top:30px;width:clamp(110px,16vw,168px);aspect-ratio:1;border-radius:50%;background:var(--pink);border:var(--bw) solid var(--ink);box-shadow:var(--sh);display:grid;place-items:center;text-align:center;font:800 clamp(14px,2vw,19px)/1.15 var(--font);transform:rotate(10deg);animation:wob 5s ease-in-out infinite}
+.badge b{display:block;font-size:2.1em;line-height:1}
+@keyframes wob{50%{transform:rotate(-6deg) scale(1.05)}}
+@media(max-width:700px){.badge{position:static;margin-top:22px;transform:rotate(6deg)}}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:10px;font:800 17px/1 var(--font);padding:14px 20px;border:var(--bw) solid var(--ink);box-shadow:var(--sh);background:var(--white);cursor:pointer;transition:transform .1s,box-shadow .1s}
+.btn:hover{transform:translate(4px,4px);box-shadow:2px 2px 0 var(--ink)}
+.btn.k{background:var(--ink);color:var(--white)}
+.btn.ig{background:linear-gradient(45deg,#ffb347,#ff5e8a 50%,#a46bff);color:var(--ink)}
+.btn svg{width:22px;height:22px;flex:none}
+
+/* 區塊標題 */
+.sec-h{display:flex;align-items:end;gap:14px;margin:72px 0 26px;flex-wrap:wrap}
+.sec-h h2{font-size:clamp(40px,7vw,84px);line-height:.95}
+.sec-h .tagc{font:800 14px/1 var(--font);background:var(--ink);color:var(--yellow);padding:8px 10px;transform:rotate(-3deg);margin-bottom:10px}
+
+/* 作品 */
+.works{display:grid;grid-template-columns:repeat(2,1fr);gap:34px 30px}
+@media(max-width:800px){.works{grid-template-columns:1fr}}
+.work{border:var(--bw) solid var(--ink);box-shadow:var(--sh);padding:16px;display:flex;flex-direction:column;gap:12px;transition:transform .15s,box-shadow .15s}
+.work:nth-child(1){background:var(--green)} .work:nth-child(2){background:var(--blue)}
+.work:nth-child(3){background:var(--violet)} .work:nth-child(4){background:var(--orange)}
+.work:nth-child(5){background:var(--pink)}  .work:nth-child(6){background:var(--yellow)}
+.work:nth-child(7){background:var(--white)}
+.work:nth-child(odd){transform:rotate(-.5deg)} .work:nth-child(even){transform:rotate(.5deg)}
+.work:hover{transform:translate(-4px,-4px) rotate(0);box-shadow:11px 11px 0 var(--ink)}
+.work .top{display:flex;justify-content:space-between;align-items:center;font:800 14px/1 var(--font)}
+.work .no{background:var(--ink);color:var(--white);padding:6px 9px}
+.work .kind{border:2px solid var(--ink);padding:4px 8px;background:var(--white)}
+.work .frame{border:var(--bw) solid var(--ink);background:var(--white);aspect-ratio:16/10;overflow:hidden}
+.work .frame img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.work h3{font-size:clamp(28px,4vw,40px);line-height:1}
+.work p{margin:0;font-weight:700;font-size:15px}
+.work .go{align-self:flex-start;margin-top:auto;font:800 15px/1 var(--font);background:var(--ink);color:var(--white);padding:11px 15px;border:var(--bw) solid var(--ink)}
+.work:hover .go{background:var(--white);color:var(--ink)}
+.work.wide{grid-column:1/-1;flex-direction:row;align-items:center;gap:26px}
+.work.wide .frame{flex:1.1}
+.work.wide .info{flex:1;display:flex;flex-direction:column;gap:12px}
+@media(max-width:800px){.work.wide{flex-direction:column;align-items:stretch}}
+
+/* 文章清單 */
+.posts{border:var(--bw) solid var(--ink);background:var(--white);box-shadow:var(--sh)}
+.post{display:grid;grid-template-columns:76px 1fr auto;gap:16px;align-items:center;padding:16px 20px;border-bottom:var(--bw) solid var(--ink);transition:background .1s}
+.post:last-child{border-bottom:0}
+.post .n{font:800 44px/1 var(--font);color:transparent;-webkit-text-stroke:2px var(--ink)}
+.post h3{font:800 clamp(17px,2.3vw,23px)/1.35 "Bricolage Grotesque","Noto Sans TC",sans-serif;letter-spacing:0}
+.post .m{font-size:13px;font-weight:700;margin-top:4px;opacity:.75}
+.post .arr{font:800 28px/1 var(--font);transition:transform .15s}
+.post:hover{background:var(--yellow)}
+.post:hover .n{color:var(--ink)} .post:hover .arr{transform:translateX(8px)}
+.post:nth-child(3n+2):hover{background:var(--pink)} .post:nth-child(3n):hover{background:var(--green)}
+@media(max-width:560px){.post{grid-template-columns:50px 1fr;padding:14px}.post .n{font-size:32px}.post .arr{display:none}}
+.more{display:flex;justify-content:center;margin-top:24px}
+
+/* 文章內頁 */
+.sheet{margin-top:84px;background:var(--white);border:var(--bw) solid var(--ink);box-shadow:10px 10px 0 var(--ink);padding:clamp(20px,5vw,60px)}
+.sheet .kicker{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.chip{font:800 13px/1 var(--font);border:2px solid var(--ink);padding:6px 9px;background:var(--yellow)}
+.chip:nth-child(2){background:var(--pink)} .chip:nth-child(3){background:var(--green)}
+.sheet h1{font-size:clamp(34px,6vw,70px);line-height:1.08;max-width:15em}
+.sheet .by{margin:18px 0 32px;font-weight:700;font-size:14px;padding-bottom:20px;border-bottom:var(--bw) dashed var(--ink)}
+.prose{max-width:38em}
+.prose p{margin:0 0 22px;font-size:18px;line-height:2;font-weight:500}
+.prose h2{display:inline-block;font:800 24px/1.2 var(--font);background:var(--ink);color:var(--white);padding:8px 14px;margin:30px 0 20px;transform:rotate(-1deg)}
+.prose ul{padding:0;list-style:none;margin:0 0 22px}
+.prose li{position:relative;padding-left:34px;font-size:18px;line-height:1.9;margin-bottom:6px;font-weight:500}
+.prose li::before{content:"✓";position:absolute;left:0;top:3px;width:24px;height:24px;display:grid;place-items:center;background:var(--green);border:2px solid var(--ink);font:800 14px/1 var(--font)}
+.prose blockquote{margin:30px 0 30px -6px;padding:20px 24px;background:var(--pink);border:var(--bw) solid var(--ink);box-shadow:6px 6px 0 var(--ink);transform:rotate(-1deg);font:800 clamp(20px,3vw,28px)/1.4 "Bricolage Grotesque","Noto Sans TC",sans-serif;max-width:22em}
+.prose code{background:var(--yellow);border:2px solid var(--ink);padding:1px 6px;font-size:.85em}
+.endcard{margin-top:44px;background:var(--yellow);border:var(--bw) solid var(--ink);box-shadow:var(--sh);padding:22px;display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.endcard b{font:800 clamp(22px,3vw,30px)/1.2 var(--font);display:block}
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
+.pn a{border:var(--bw) solid var(--ink);padding:14px 16px;font-weight:800;background:var(--white);transition:background .1s}
+.pn a:hover{background:var(--blue)} .pn small{display:block;font-size:12px;letter-spacing:.1em;opacity:.7}
+.pn a:last-child{text-align:right}
+@media(max-width:560px){.pn{grid-template-columns:1fr}.pn a:last-child{text-align:left}}
+
+/* 聯絡 */
+.contact{margin-top:88px;background:var(--pink);border:var(--bw) solid var(--ink);box-shadow:10px 10px 0 var(--ink);padding:clamp(22px,5vw,64px);position:relative;overflow:hidden}
+.contact h2{font-size:clamp(44px,9vw,120px);line-height:.95;letter-spacing:-.04em}
+.contact p{max-width:30em;font-size:18px;font-weight:700;margin:18px 0 30px}
+.contact .big{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:640px){.contact .big{grid-template-columns:1fr}}
+.bigbtn{display:flex;flex-direction:column;gap:6px;padding:22px;border:var(--bw) solid var(--ink);box-shadow:var(--sh);transition:transform .1s,box-shadow .1s;position:relative}
+.bigbtn:hover{transform:translate(5px,5px);box-shadow:1px 1px 0 var(--ink)}
+.bigbtn svg{width:40px;height:40px}
+.bigbtn b{font:800 clamp(26px,4vw,40px)/1 var(--font)}
+.bigbtn span{font-weight:700}
+.bigbtn i{position:absolute;right:18px;top:16px;font:800 30px/1 var(--font);font-style:normal}
+.bigbtn.k{background:var(--ink);color:var(--white)}
+.bigbtn.ig{background:linear-gradient(45deg,#ffb347,#ff5e8a 55%,#a46bff)}
+.sticker{position:absolute;right:-16px;top:18px;background:var(--yellow);border:var(--bw) solid var(--ink);padding:8px 28px;font:800 14px/1 var(--font);transform:rotate(12deg)}
+@media(max-width:640px){.sticker{display:none}}
+
+footer{padding-block:48px 40px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-weight:800;font-size:14px}
+footer a{border-bottom:2px solid var(--ink)}
+footer a:hover{background:var(--yellow)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-th" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.2" fill="none" stroke="currentColor" stroke-width="2.4"/><text x="12" y="17" text-anchor="middle" font-size="14" font-weight="800" font-family="Bricolage Grotesque,sans-serif" fill="currentColor">@</text></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="2.8" y="2.8" width="18.4" height="18.4" rx="5.2" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="17.4" cy="6.6" r="1.4" fill="currentColor"/></symbol>
+</svg>
+
+<div class="ticker" aria-hidden="true"><div>★ 一個人，設計、寫程式、上線 ★ 7 件作品 ★ 27 篇開發筆記 ★ 歡迎到 THREADS / INSTAGRAM 找我聊 ★ 一個人，設計、寫程式、上線 ★ 7 件作品 ★ 27 篇開發筆記 ★</div></div>
+
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#">KENT SHEN★</a>
+  <nav aria-label="主選單"><a href="#works">作品</a><a href="#posts">文章</a><a href="#contact">聯絡</a></nav>
+</div></header>
+
+<main class="wrap">
+
+<section class="hero">
+  <h1>我做<mark>小工具</mark>，<span class="l2">也<mark class="p">寫字</mark>。</span></h1>
+  <p>我是 Kent，住在高雄。一個人把工具從想法做到上線，再把過程中踩過的坑寫下來。</p>
+  <div class="cta-row">
+    <a class="btn k" href="#works">看作品 ↓</a>
+    <a class="btn" href="https://www.threads.com/@kentshen77" rel="noopener"><svg><use href="#i-th"/></svg>Threads</a>
+    <a class="btn ig" href="https://www.instagram.com/YOUR_IG_HANDLE/" rel="noopener"><svg><use href="#i-ig"/></svg>Instagram</a>
+  </div>
+  <div class="badge" aria-hidden="true"><div><b>7</b>WORKS<br>+27 POSTS</div></div>
+</section>
+
+<!-- 作品 -->
+<div class="sec-h" id="works"><h2>作品</h2><span class="tagc">7 件 · 持續更新</span></div>
+<section class="works">
+  <a class="work wide" href="https://taiwan-baiyue.kentshen.com/">
+    <div class="frame"><img src="/thumbnails/taiwan-baiyue.png" alt="台灣百岳地圖介面" loading="lazy" /></div>
+    <div class="info"><div class="top"><span class="no">01</span><span class="kind">網站</span></div>
+      <h3>台灣百岳地圖</h3><p>Leaflet 地圖版的百岳查詢工具：衛星影像、篩選面板與登山準備清單。</p><span class="go">開啟作品 →</span></div>
+  </a>
+  <a class="work" href="https://tw-stock-report.observer1220.workers.dev/"><div class="top"><span class="no">02</span><span class="kind">網站</span></div>
+    <div class="frame"><img src="/thumbnails/tw-stock-report.png" alt="台股報表介面" loading="lazy" /></div>
+    <h3>台股報表</h3><p>一鍵抓取台股與美股基本面數據，自動算出投資評分，支援 CSV／JSON 匯出。</p><span class="go">開啟作品 →</span></a>
+  <a class="work" href="https://undercurrent.observer1220.workers.dev/"><div class="top"><span class="no">03</span><span class="kind">網站</span></div>
+    <div class="frame"><img src="/thumbnails/undercurrent.png" alt="Undercurrent 介面" loading="lazy" /></div>
+    <h3>Undercurrent</h3><p>公司與法人關係圖譜，整合官方登記資料，做盡職調查的起點。</p><span class="go">開啟作品 →</span></a>
+  <a class="work" href="https://elsewhere.observer1220.workers.dev/"><div class="top"><span class="no">04</span><span class="kind">網站</span></div>
+    <div class="frame"><img src="/thumbnails/elsewhere.png" alt="Elsewhere 介面" loading="lazy" /></div>
+    <h3>Elsewhere</h3><p>AI 行程規劃，涵蓋 171 個國家，用 3D 地球選目的地。</p><span class="go">開啟作品 →</span></a>
+  <a class="work" href="https://veil.observer1220.workers.dev/"><div class="top"><span class="no">05</span><span class="kind">網站</span></div>
+    <div class="frame"><img src="/thumbnails/veil.png" alt="Veil 介面" loading="lazy" /></div>
+    <h3>Veil</h3><p>貼給 AI 之前，先把密碼、私鑰與個資遮起來。內容只在你的瀏覽器處理。</p><span class="go">開啟作品 →</span></a>
+  <a class="work" href="https://lyric-sync.observer1220.workers.dev/"><div class="top"><span class="no">06</span><span class="kind">Chrome 外掛</span></div>
+    <div class="frame"><img src="/thumbnails/lyric-sync.png" alt="Lyric Sync 介面" loading="lazy" /></div>
+    <h3>Lyric Sync</h3><p>YouTube 日文歌曲的浮動歌詞面板：原文、假名、中文與逐字跑詞。</p><span class="go">開啟作品 →</span></a>
+  <a class="work" href="https://latent.kentshen.com/"><div class="top"><span class="no">07</span><span class="kind">網站</span></div>
+    <div class="frame"><img src="/thumbnails/latent.png" alt="Latent 介面" loading="lazy" /></div>
+    <h3>Latent</h3><p>照片與影片依時間、地點自動分組，所有處理都在瀏覽器完成。</p><span class="go">開啟作品 →</span></a>
+</section>
+
+<!-- 文章 -->
+<div class="sec-h" id="posts"><h2>文章</h2><span class="tagc">27 篇 · 最新優先</span></div>
+<section class="posts">
+  <a class="post" href="#read"><span class="n">27</span><div><h3>前端的資料，真的保護得了嗎？一個誠實的說明</h3><div class="m">2026.11.05 · 資安 · 前端</div></div><span class="arr">→</span></a>
+  <a class="post" href="#read"><span class="n">26</span><div><h3>公開資料可以隨便用嗎？做資料整合工具時我思考的幾件事</h3><div class="m">2026.11.04 · Undercurrent · 資料倫理</div></div><span class="arr">→</span></a>
+  <a class="post" href="#read"><span class="n">25</span><div><h3>跟 AI 一起寫程式：我怎麼用一份專案規則檔讓它不踩線</h3><div class="m">2026.11.04 · AI 協作 · 開發流程</div></div><span class="arr">→</span></a>
+  <a class="post" href="#read"><span class="n">24</span><div><h3>資料庫 migration 要寫成「重跑也安全」：冪等性的實務做法</h3><div class="m">2026.11.03 · D1 · SQL</div></div><span class="arr">→</span></a>
+  <a class="post" href="#read"><span class="n">23</span><div><h3>PWA 離線功能最容易踩的坑：Service Worker 的快取為什麼更新不了</h3><div class="m">2026.11.02 · PWA · 前端</div></div><span class="arr">→</span></a>
+  <a class="post" href="#read"><span class="n">22</span><div><h3>不用 CMS 也能經營部落格：把 Markdown 檔案當成資料庫</h3><div class="m">2026.11.01 · React · Vite</div></div><span class="arr">→</span></a>
+</section>
+<div class="more"><a class="btn" href="#">看全部 27 篇 →</a></div>
+
+<!-- 文章內頁 -->
+<article class="sheet" id="read">
+  <div class="kicker"><span class="chip">資安</span><span class="chip">前端</span><span class="chip">台灣百岳地圖</span></div>
+  <h1>前端的資料，真的<mark>保護得了</mark>嗎？</h1>
+  <div class="by">2026.11.05 · 約 4 分鐘 · Kent Shen</div>
+  <div class="prose">
+    <p>台灣百岳地圖上的山岳資料，不是放在網站的靜態檔案裡，而是透過一支後端 API 提供。有人問過我：這樣是不是就保護了資料？我的答案是：<mark class="g">只保護了一部分</mark>，而且要誠實說清楚是哪一部分。</p>
+    <h2>這樣做有什麼效果</h2>
+    <ul>
+      <li>資料不再是一個「一個網址就找得到」的檔案。</li>
+      <li>不會被搜尋引擎當成獨立的頁面索引。</li>
+      <li>不會被隨手寫的爬蟲撿走。</li>
+    </ul>
+    <h2>這樣做沒有什麼效果</h2>
+    <p>只要地圖需要顯示這些資料，瀏覽器就一定會收到完整的內容。這是前端網站的物理限制：</p>
+    <blockquote>凡是要顯示給使用者的資料，使用者的瀏覽器就必然拿得到。</blockquote>
+    <p>所以這個做法提高的是「隨手複製」的門檻，而不是做到「真正無法取得」。我在專案的說明裡也是這麼寫的，沒有把它說成資料保護。</p>
+    <h2>為什麼不乾脆加密</h2>
+    <p>解密的金鑰也得放在前端，否則瀏覽器無法解密。真正能保護資料的做法只有一種：<code>不把它送到瀏覽器</code>。</p>
+  </div>
+  <div class="endcard">
+    <div><b>讀完想聊聊？</b>直接來 Threads 或 Instagram 找我。</div>
+    <div class="cta-row" style="margin:0">
+      <a class="btn k" href="https://www.threads.com/@kentshen77" rel="noopener"><svg><use href="#i-th"/></svg>Threads</a>
+      <a class="btn ig" href="https://www.instagram.com/YOUR_IG_HANDLE/" rel="noopener"><svg><use href="#i-ig"/></svg>Instagram</a>
+    </div>
+  </div>
+  <div class="pn"><a href="#"><small>← 上一篇</small>公開資料可以隨便用嗎？</a><a href="#"><small>下一篇 →</small>敬請期待</a></div>
+</article>
+
+<!-- 聯絡 -->
+<section class="contact" id="contact">
+  <span class="sticker">NOW OPEN ★</span>
+  <h2>來<mark>聊聊</mark>吧！</h2>
+  <p>合作、提問、發現 bug，或只是想打聲招呼，都可以直接私訊我。我通常一兩天內回覆。</p>
+  <div class="big">
+    <a class="bigbtn k" href="https://www.threads.com/@kentshen77" rel="noopener"><i>↗</i><svg><use href="#i-th"/></svg><b>Threads</b><span>@kentshen77</span></a>
+    <a class="bigbtn ig" href="https://www.instagram.com/YOUR_IG_HANDLE/" rel="noopener"><i>↗</i><svg><use href="#i-ig"/></svg><b>Instagram</b><span>@YOUR_IG_HANDLE</span></a>
+  </div>
+</section>
+
+<footer><span>© 2026 Kent Shen · 高雄</span><span><a href="#">關於</a> · <a href="#">隱私權政策</a></span></footer>
+</main>
+</body>
+</html>

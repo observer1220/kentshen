@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocale } from "../i18n/LocaleContext";
 import { Link } from "../router";
 import { posts, formatDate } from "../blog/posts";
+import SocialLinks from "./Social";
 
 // Kaohsiung and Taipei share a time zone, so Intl only knows "Asia/Taipei".
 const clockFmt = new Intl.DateTimeFormat("en-GB", {
@@ -28,11 +29,10 @@ function Hero() {
   const f = data.ui.hero.facts;
 
   return (
-    <section className="hero g">
+    <section className="hero">
       <h1 className="wordmark">
-        Kent{" "}
-        <br />
-        Shen<b>.</b>
+        Kent <mark>Shen</mark>
+        <b>.</b>
       </h1>
       <ul className="facts mono">
         <li>
@@ -48,6 +48,7 @@ function Hero() {
           <Clock />
         </li>
       </ul>
+      <SocialLinks />
     </section>
   );
 }
@@ -66,7 +67,7 @@ function WorksIndex() {
 
   return (
     <section id="works" aria-labelledby="works-h">
-      <div className="sechead g">
+      <div className="sechead">
         <h2 id="works-h">{w.heading}</h2>
         <span className="count mono mute">
           {pad(items.length)} / {pad(data.products.length)}
@@ -83,7 +84,7 @@ function WorksIndex() {
         </label>
       </div>
 
-      <div className="plates g">
+      <div className="plates">
         {items.length === 0 ? (
           <p className="empty">{w.empty}</p>
         ) : (
@@ -96,14 +97,17 @@ function WorksIndex() {
                     <img src={p.thumbnail} alt={`${p.title}: ${p.tagline}`} loading="lazy" />
                   </figure>
                 )}
-                <div className="cap">
-                  <span className="no mono">{pad(no)}</span>
+                <div className="body">
+                  <div className="top">
+                    <span className="no mono">{pad(no)}</span>
+                    <span className="meta mono">
+                      {p.kind} · {p.date.slice(0, 4)}
+                    </span>
+                  </div>
                   <h3>{p.title}</h3>
-                  <span className="meta mono">
-                    {p.kind} · {p.date.slice(0, 4)}
-                  </span>
+                  <p>{p.tagline}</p>
+                  <span className="go">{data.ui.linkLabels.visit}</span>
                 </div>
-                <p>{p.tagline}</p>
               </a>
             );
           })
@@ -119,7 +123,7 @@ function BlogAndContact() {
   const latest = posts[0];
 
   return (
-    <section className="pair g">
+    <section className="pair">
       <div className="col">
         <span className="mono mute">{h.blog.title}</span>
         <h2>
@@ -143,17 +147,15 @@ function BlogAndContact() {
         </Link>
       </div>
 
-      <div className="col">
+      <div className="col contact-col">
         <span className="mono mute">{h.contact.title}</span>
         <h2>
           <Link to="/contact">{h.contact.title}</Link>
         </h2>
         <p className="lead">{h.contact.desc}</p>
-        <a className="mail" href={`mailto:${h.contact.email}`}>
-          {h.contact.email}
-        </a>
+        <SocialLinks />
         <Link className="more" to="/contact">
-          {h.contact.form}
+          {h.contact.cta}
         </Link>
       </div>
     </section>

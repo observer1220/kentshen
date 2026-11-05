@@ -25,13 +25,29 @@
       }
     },
     "colophon": "字體使用 Noto Serif TC 與 Zen Kaku Gothic New。純手工打造，沒有框架。",
-    "nav": { "works": "作品", "blog": "Blog", "contact": "聯絡" },
+    "nav": {
+      "works": "作品",
+      "blog": "Blog",
+      "contact": "聯絡"
+    },
     "hero": {
-      "facts": { "works": "作品", "deploy": "部署", "time": "高雄時間" }
+      "facts": {
+        "works": "作品",
+        "deploy": "部署",
+        "time": "高雄時間"
+      }
     },
     "home": {
-      "blog": { "title": "Blog", "desc": "做工具時踩過的坑、設計取捨與筆記。", "all": "全部文章 →" },
-      "contact": { "title": "聯絡", "desc": "產品回饋、合作或客製化，留言或寄信都可以。", "email": "observer1220@gmail.com", "form": "使用表單聯絡 →" }
+      "blog": {
+        "title": "Blog",
+        "desc": "做工具時踩過的坑、設計取捨與筆記。",
+        "all": "全部文章 →"
+      },
+      "contact": {
+        "title": "聯絡",
+        "desc": "產品回饋、合作或客製化，直接私訊我就可以。",
+        "cta": "前往聯絡頁 →"
+      }
     },
     "works": {
       "heading": "作品",
@@ -45,21 +61,16 @@
       "backToList": "← 所有文章",
       "notFound": "找不到這篇文章"
     },
-    "install": { "button": "加入主畫面", "ios": "在 Safari 點下方「分享」，再選「加入主畫面」。", "close": "關閉" },
+    "install": {
+      "button": "加入主畫面",
+      "ios": "在 Safari 點下方「分享」，再選「加入主畫面」。",
+      "close": "關閉"
+    },
     "feedbackLabel": "使用者回饋",
     "threadsFallback": "在 Threads 查看 →",
     "contact": {
       "heading": "聯絡",
-      "categoryLabel": "類型",
-      "categoryOptions": {
-        "feedback": "產品回饋",
-        "custom": "客製化服務"
-      },
-      "nameLabel": "姓名",
-      "phoneLabel": "手機",
-      "emailLabel": "Email",
-      "descLabel": "說明",
-      "submitLabel": "送出",
+      "lead": "產品回饋、合作、客製化，或只是想打聲招呼，都可以直接傳訊息給我。",
       "backLabel": "← 返回"
     }
   },

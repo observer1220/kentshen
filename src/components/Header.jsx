@@ -6,7 +6,7 @@ export default function Header() {
   const nav = data.ui.nav;
 
   return (
-    <header className="bar g">
+    <header className="bar">
       <Link className="brand" to="/">
         Kent Shen
       </Link>

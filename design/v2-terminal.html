@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>方案 B · 終端機 — Kent Shen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+/* 方案 B「終端機」：深色、等寬字、螢光綠＋天藍。給開發者與工具愛好者的工作台。 */
+:root{
+  --bg:#0a0e14; --panel:#111723; --panel2:#151d2c; --line:#1f2b3d; --text:#d6deeb; --mute:#7a8aa3;
+  --green:#4ade80; --blue:#38bdf8; --amber:#fbbf24;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace; --sans:'Noto Sans TC',system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:400 15px/1.75 var(--sans);-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(circle at 80% -10%,rgba(56,189,248,.10),transparent 40%),radial-gradient(circle at 0 30%,rgba(74,222,128,.06),transparent 35%)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:clamp(16px,3.4vw,40px)}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.mono{font-family:var(--mono)}
+
+/* 頂欄 */
+.top{position:sticky;top:0;z-index:5;backdrop-filter:blur(10px);background:rgba(10,14,20,.78);border-bottom:1px solid var(--line)}
+.top .row{display:flex;align-items:center;justify-content:space-between;height:56px;gap:12px}
+.brand{font:700 15px var(--mono)}
+.brand b{color:var(--green)}
+.nav{display:flex;gap:6px;font:500 13px var(--mono)}
+.nav a{padding:6px 12px;border-radius:6px;color:var(--mute)}
+.nav a:hover{background:var(--panel2);color:var(--text)}
+.nav a.cta{border:1px solid var(--green);color:var(--green)}
+.nav a.cta:hover{background:var(--green);color:#04210f}
+
+/* 開場：終端機視窗 */
+.hero{padding-block:clamp(40px,8vw,96px) 40px}
+.term{border:1px solid var(--line);border-radius:12px;background:var(--panel);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.term .bar{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--panel2)}
+.term .bar i{width:11px;height:11px;border-radius:50%;background:#2c3a52}
+.term .bar span{margin-left:8px;font:400 12px var(--mono);color:var(--mute)}
+.term .body{padding:clamp(18px,3vw,32px);font:400 clamp(13px,1.6vw,16px)/1.9 var(--mono)}
+.p{color:var(--green)} .c{color:var(--mute)} .k{color:var(--blue)} .s{color:var(--amber)}
+.caret{display:inline-block;width:9px;height:1.1em;background:var(--green);vertical-align:-3px;animation:b 1.1s steps(1) infinite}
+@keyframes b{50%{opacity:0}}
+.hero h1{font:700 clamp(30px,5vw,56px)/1.25 var(--sans);margin:36px 0 10px;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--green)}
+.hero .sub{color:var(--mute);max-width:36em;margin:0}
+
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:56px 0 20px}
+.sec-h h2{font:700 20px var(--mono);margin:0}
+.sec-h h2::before{content:'## ';color:var(--green)}
+.sec-h span{font:400 12px var(--mono);color:var(--mute)}
+
+/* 作品：卡片網格 */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tile{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:12px;background:var(--panel);overflow:hidden;transition:.2s}
+.tile:hover{border-color:var(--green);transform:translateY(-4px);box-shadow:0 12px 40px rgba(74,222,128,.12)}
+.tile img{width:100%;aspect-ratio:1200/630;object-fit:cover;border-bottom:1px solid var(--line);filter:saturate(.9)}
+.tile .in{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.tile .head{display:flex;justify-content:space-between;align-items:center;font:500 11px var(--mono);color:var(--mute)}
+.chip{border:1px solid var(--line);border-radius:99px;padding:1px 9px}
+.live{color:var(--green)} .live::before{content:'● '}
+.tile h3{font:700 17px var(--mono);margin:4px 0 0}
+.tile p{margin:0;color:var(--mute);font-size:14px;line-height:1.65}
+.tile .run{margin-top:auto;padding-top:10px;font:500 13px var(--mono);color:var(--green)}
+@media(max-width:960px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+
+/* 文章列表：像 git log */
+.log{border:1px solid var(--line);border-radius:12px;background:var(--panel);overflow:hidden}
+.entry{display:grid;grid-template-columns:96px 1fr auto;gap:18px;padding:16px 20px;border-bottom:1px solid var(--line);align-items:baseline}
+.entry:last-child{border-bottom:0}
+.entry:hover{background:var(--panel2)}
+.entry time{font:400 13px var(--mono);color:var(--mute)}
+.entry h3{margin:0;font:500 16px var(--sans)}
+.entry:hover h3{color:var(--green)}
+.entry .tg{display:flex;gap:6px;font:400 11px var(--mono)}
+.entry .tg span{color:var(--blue)}
+.entry .tg span::before{content:'#'}
+@media(max-width:700px){.entry{grid-template-columns:1fr;gap:2px}}
+
+/* 文章閱讀頁：目錄＋內文 */
+.doc{display:grid;grid-template-columns:220px minmax(0,1fr);gap:40px;margin-top:20px}
+.toc{position:sticky;top:76px;align-self:start;font:400 13px var(--mono);border-left:1px solid var(--line);padding-left:16px}
+.toc b{display:block;color:var(--mute);font-weight:500;margin-bottom:8px}
+.toc a{display:block;color:var(--mute);padding:3px 0}
+.toc a.on{color:var(--green)}
+.prog{height:3px;background:var(--line);border-radius:3px;margin:14px 0 0;overflow:hidden}
+.prog i{display:block;height:100%;width:38%;background:linear-gradient(90deg,var(--green),var(--blue))}
+.art{max-width:720px}
+.art .meta{font:400 12px var(--mono);color:var(--mute);display:flex;gap:14px;flex-wrap:wrap}
+.art h1{font:700 clamp(26px,3.6vw,38px)/1.4 var(--sans);margin:10px 0 24px}
+.art p{margin:0 0 1.2em;font-size:16px;line-height:1.95;color:#c4cfe0}
+.art h2{font:700 20px var(--mono);margin:1.8em 0 .6em;color:var(--text)}
+.art h2::before{content:'## ';color:var(--green)}
+.art code{font:400 .88em var(--mono);background:var(--panel2);border:1px solid var(--line);padding:1px 6px;border-radius:5px;color:var(--amber)}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;overflow:auto;font:400 13px/1.8 var(--mono);margin:1.4em 0}
+.callout{border-left:3px solid var(--blue);background:rgba(56,189,248,.07);padding:12px 16px;border-radius:0 8px 8px 0;margin:1.4em 0;font-size:15px}
+.reach{margin-top:40px;border:1px dashed var(--green);border-radius:12px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.reach code{color:var(--green)}
+@media(max-width:860px){.doc{grid-template-columns:1fr}.toc{position:static;border-left:0;padding-left:0}}
+
+/* 聯絡：指令面板 */
+.cmd{margin:56px 0 70px;border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:clamp(20px,4vw,40px)}
+.cmd h2{font:700 clamp(22px,3vw,32px)/1.4 var(--sans);margin:0 0 6px}
+.cmd .line{font:400 14px var(--mono);color:var(--mute);margin:0 0 24px}
+.cmd .line b{color:var(--green);font-weight:500}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.opt{display:flex;align-items:center;gap:16px;padding:16px 18px;border:1px solid var(--line);border-radius:10px;background:var(--panel2);transition:.2s}
+.opt:hover{border-color:var(--green);box-shadow:0 0 0 3px rgba(74,222,128,.12)}
+.opt svg{width:28px;height:28px;flex:none;color:var(--green)}
+.opt .t{font:700 15px var(--mono)} .opt .h{font:400 13px var(--mono);color:var(--mute)}
+.opt kbd{margin-left:auto;font:500 11px var(--mono);border:1px solid var(--line);border-radius:5px;padding:2px 7px;color:var(--mute)}
+@media(max-width:640px){.opts{grid-template-columns:1fr}}
+
+footer{border-top:1px solid var(--line);padding-block:22px 44px;font:400 12px var(--mono);color:var(--mute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap row">
+  <a class="brand" href="#">~/kentshen<b>_</b></a>
+  <nav class="nav" aria-label="主選單"><a href="#works">works</a><a href="#posts">posts</a><a class="cta" href="#contact">contact</a></nav>
+</div></header>
+
+<main class="wrap">
+<section class="hero">
+  <div class="term" role="img" aria-label="終端機風格的自我介紹">
+    <div class="bar"><i></i><i></i><i></i><span>kent@kaohsiung — zsh</span></div>
+    <div class="body">
+      <div><span class="p">$</span> whoami</div>
+      <div class="c">Kent Shen — 住在高雄的個人開發者</div>
+      <div><span class="p">$</span> ls works/ | wc -l</div>
+      <div class="s">7</div>
+      <div><span class="p">$</span> cat now.txt</div>
+      <div class="c">一個人設計、寫程式、上線；全部跑在 <span class="k">Cloudflare Workers</span></div>
+      <div><span class="p">$</span> <span class="caret"></span></div>
+    </div>
+  </div>
+  <h1>小工具，<em>一個一個</em>上線。</h1>
+  <p class="sub">這裡收著我做的作品，以及做的過程中踩過的坑與取捨。</p>
+</section>
+
+<section id="works" aria-labelledby="wk">
+  <div class="sec-h"><h2 id="wk">works</h2><span>7 items</span></div>
+  <div class="grid">
+    <a class="tile" href="https://taiwan-baiyue.kentshen.com/"><img src="/thumbnails/taiwan-baiyue.png" alt="TAIWAN-BAIYUE" loading="lazy" /><div class="in"><div class="head"><span class="chip">web</span><span class="live">live</span></div><h3>taiwan-baiyue</h3><p>Leaflet 地圖版百岳查詢：衛星影像、篩選面板、登山準備清單。</p><span class="run">open →</span></div></a>
+    <a class="tile" href="https://tw-stock-report.observer1220.workers.dev/"><img src="/thumbnails/tw-stock-report.png" alt="TW-STOCK-REPORT" loading="lazy" /><div class="in"><div class="head"><span class="chip">web</span><span class="live">live</span></div><h3>tw-stock-report</h3><p>一鍵抓取台股與美股基本面，算出投資評分，匯出 CSV／JSON。</p><span class="run">open →</span></div></a>
+    <a class="tile" href="https://undercurrent.observer1220.workers.dev/"><img src="/thumbnails/undercurrent.png" alt="UNDERCURRENT" loading="lazy" /><div class="in"><div class="head"><span class="chip">web</span><span class="live">live</span></div><h3>undercurrent</h3><p>公司與法人關係圖譜，整合官方登記資料的盡職調查工具。</p><span class="run">open →</span></div></a>
+    <a class="tile" href="https://elsewhere.observer1220.workers.dev/"><img src="/thumbnails/elsewhere.png" alt="ELSEWHERE" loading="lazy" /><div class="in"><div class="head"><span class="chip">web</span><span class="live">live</span></div><h3>elsewhere</h3><p>AI 行程規劃，171 個國家，3D 地球選目的地。</p><span class="run">open →</span></div></a>
+    <a class="tile" href="https://veil.observer1220.workers.dev/"><img src="/thumbnails/veil.png" alt="VEIL" loading="lazy" /><div class="in"><div class="head"><span class="chip">web</span><span class="live">live</span></div><h3>veil</h3><p>貼給 AI 前先遮蔽密碼與個資，內容只在瀏覽器處理。</p><span class="run">open →</span></div></a>
+    <a class="tile" href="https://lyric-sync.observer1220.workers.dev/"><img src="/thumbnails/lyric-sync.png" alt="LYRIC-SYNC" loading="lazy" /><div class="in"><div class="head"><span class="chip">extension</span><span class="live">live</span></div><h3>lyric-sync</h3><p>YouTube 日文歌詞面板：原文、假名、中文與逐字跑詞。</p><span class="run">open →</span></div></a>
+    <a class="tile" href="https://latent.kentshen.com/"><img src="/thumbnails/latent.png" alt="LATENT" loading="lazy" /><div class="in"><div class="head"><span class="chip">web</span><span class="live">live</span></div><h3>latent</h3><p>照片與影片依時間、地點分組，檔案不上傳。</p><span class="run">open →</span></div></a>
+  </div>
+</section>
+
+<section id="posts" aria-labelledby="ps">
+  <div class="sec-h"><h2 id="ps">posts</h2><span>git log --oneline</span></div>
+  <div class="log">
+    <a class="entry" href="#doc"><time>2026-11-05</time><h3>前端的資料，真的保護得了嗎？</h3><span class="tg"><span>資安</span><span>前端</span></span></a>
+    <a class="entry" href="#doc"><time>2026-11-04</time><h3>跟 AI 一起寫程式：用專案規則檔讓它不踩線</h3><span class="tg"><span>AI協作</span></span></a>
+    <a class="entry" href="#doc"><time>2026-11-03</time><h3>資料庫 migration 要寫成「重跑也安全」</h3><span class="tg"><span>D1</span><span>SQL</span></span></a>
+    <a class="entry" href="#doc"><time>2026-10-14</time><h3>Cloudflare Workers 與 Pages 差在哪？三個坑</h3><span class="tg"><span>Workers</span></span></a>
+    <a class="entry" href="#doc"><time>2026-10-13</time><h3>為什麼我把登山地圖的即時天氣拿掉了</h3><span class="tg"><span>產品設計</span></span></a>
+  </div>
+</section>
+
+<section id="doc" aria-label="文章閱讀頁預覽">
+  <div class="sec-h"><h2>post view</h2><span>文章閱讀頁預覽</span></div>
+  <div class="doc">
+    <aside class="toc" aria-label="文章目錄"><b>ON THIS PAGE</b><a href="#">怎麼分辨</a><a class="on" href="#">坑一：指令用錯</a><a href="#">坑二：一個 Worker 管前後端</a><a href="#">坑三：搬家後舊站還活著</a><div class="prog" role="progressbar" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100" aria-label="閱讀進度"><i></i></div></aside>
+    <article class="art">
+      <div class="meta"><span>2026-10-14</span><span>· 約 5 分鐘</span><span>· #Cloudflare #Workers</span></div>
+      <h1>Cloudflare Workers 與 Pages 差在哪？我踩過的三個坑</h1>
+      <p>兩者在 Dashboard 上長得很像，但底層是不同產品。指令用錯會出現找不到專案的錯誤。</p>
+      <h2>怎麼分辨你的專案是哪一種</h2>
+      <p>最快的方式是看網址：<code>pages.dev</code> 是 Pages，<code>workers.dev</code> 是 Workers。部署指令也不同：</p>
+<pre><span class="c"># Workers with Static Assets</span>
+<span class="p">$</span> npx wrangler deploy
+
+<span class="c"># Cloudflare Pages</span>
+<span class="p">$</span> npx wrangler pages deploy</pre>
+      <div class="callout">規則很簡單：Workers 的所有指令，就是把 <code>pages</code> 那一段拿掉。</div>
+      <div class="reach"><span>有問題或想法？<code>$ contact --via threads|instagram</code></span><a class="nav cta" style="display:inline-block;padding:6px 14px;border:1px solid var(--green);border-radius:6px;color:var(--green);font:500 13px var(--mono)" href="#contact">聯絡我 →</a></div>
+    </article>
+  </div>
+</section>
+
+<section id="contact" class="cmd" aria-labelledby="ct">
+  <h2 id="ct">想聊聊？選一個管道。</h2>
+  <p class="line"><b>$</b> contact --via <span style="color:var(--blue)">threads</span> | <span style="color:var(--blue)">instagram</span></p>
+  <div class="opts">
+    <a class="opt" href="https://www.threads.com/@kentshen77" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.6 11.2c-.4-2.6-2-4-4.8-4-2.4 0-4 1.2-4.6 3.2M16.8 15c-.8 1.9-2.4 2.8-4.6 2.8-2.6 0-4.1-1.3-4.1-3.1 0-1.9 1.7-3 4.5-3 1.5 0 2.7.2 3.8.5.2 3-1.1 5.8-4.2 5.8"/><path d="M12 2.5c-6 0-9.5 3.6-9.5 9.5s3.5 9.5 9.5 9.5 9.5-3.6 9.5-9.5"/></svg>
+      <div><div class="t">Threads</div><div class="h">@kentshen77</div></div><kbd>↵</kbd></a>
+    <!-- TODO: 把 YOUR_IG_HANDLE 換成你的 Instagram 帳號 -->
+    <a class="opt" href="https://www.instagram.com/YOUR_IG_HANDLE/" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></svg>
+      <div><div class="t">Instagram</div><div class="h">@YOUR_IG_HANDLE</div></div><kbd>↵</kbd></a>
+  </div>
+</section>
+</main>
+<footer class="wrap"><span>© 2026 Kent Shen · Kaohsiung</span><span><a href="#">about</a> · <a href="#">privacy</a></span></footer>
+</body>
+</html>

@@ -23,7 +23,9 @@ describe("home", () => {
     expect(screen.queryByText(/我一個人設計/)).toBeNull();
     expect(document.querySelector(".plate img").getAttribute("alt")).toContain("TAIWAN-BAIYUE");
     expect(document.querySelector('.pair a.entry[href^="/blog/"]')).not.toBeNull();
-    expect(document.querySelector('.pair a.mail[href^="mailto:"]')).not.toBeNull();
+    expect(document.querySelector('.pair a.social-btn.threads[href="https://www.threads.com/@kentshen77"]')).not.toBeNull();
+    // No Instagram handle configured yet: no placeholder link may be rendered.
+    expect(document.querySelector('a[href*="instagram.com"]')).toBeNull();
     expect(document.querySelector('.nav a[href="/blog"]')).not.toBeNull();
     expect(document.querySelectorAll(".plates .plate").length).toBe(7);
 
@@ -106,16 +108,16 @@ describe("embeds by provider", () => {
 });
 
 describe("contact flow", () => {
-  it("opens the form at /contact and Back returns home", () => {
+  it("opens the contact page at /contact and Back returns home", () => {
     render(<App />);
     fireEvent.click(document.querySelector('.nav a[href="/contact"]'));
     expect(window.location.pathname).toBe("/contact");
-    expect(document.querySelector(".contact-form")).not.toBeNull();
+    expect(document.querySelector(".social-card.threads")).not.toBeNull();
+    expect(document.querySelector("form")).toBeNull();
     expect(document.querySelector(".plates")).toBeNull();
-    expect(document.querySelector(".contact-form select").children.length).toBe(2);
 
     fireEvent.click(screen.getByText("← 返回"));
-    expect(document.querySelector(".contact-form")).toBeNull();
+    expect(document.querySelector(".social-card")).toBeNull();
     expect(document.querySelector(".plates")).not.toBeNull();
   });
 });

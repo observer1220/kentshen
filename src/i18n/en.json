@@ -81,14 +81,67 @@
   },
   "products": [
     {
+      "id": "undercurrent",
+      "category": "services",
+      "status": "live",
+      "date": "2026.08",
+      "title": "UNDERCURRENT 暗流",
+      "kind": "Website",
+      "tagline": "把董監事、經理人攤開在同一張關係圖上：查公司、查人名、查統編，一次看清楚表面之下誰跟誰真正有關係。",
+      "desc": "把董監事、經理人攤開在同一張關係圖上：查公司、查人名、查統編，一次看清楚表面之下誰跟誰真正有關係。資料來自政府公開登記。",
+      "thumbnail": "https://undercurrent.kentshen.com/og-image.png?v=3",
+      "feedback": "https://www.threads.com/@kentshen77/post/Dbib4VKDgVL",
+      "links": [
+        {
+          "label": "visit",
+          "url": "https://undercurrent.kentshen.com/"
+        }
+      ]
+    },
+    {
+      "id": "elsewhere",
+      "category": "services",
+      "status": "live",
+      "date": "2026.09",
+      "title": "ELSEWHERE 他方",
+      "kind": "Website",
+      "tagline": "轉動地球，挑一個目的地，AI 免費幫你排好一趟完整行程，含地圖、交通與匯率，幾十秒就好。",
+      "desc": "轉動地球，挑一個目的地，AI 免費幫你排好一趟完整行程，含地圖、交通與匯率，幾十秒就好。",
+      "thumbnail": "https://elsewhere.kentshen.com/og-image.png",
+      "feedback": "https://www.threads.com/@kentshen77/post/DcqatLSEy8J",
+      "links": [
+        {
+          "label": "visit",
+          "url": "https://elsewhere.kentshen.com/"
+        }
+      ]
+    },
+    {
+      "id": "lyric-sync",
+      "category": "extensions",
+      "status": "live",
+      "date": "2026.10",
+      "title": "歌謡同調 Kayo Docho",
+      "kind": "Chrome Extension",
+      "tagline": "邊聽 YouTube 日韓歌曲，邊看懂歌詞——假名、羅馬拼音、翻譯即時同步，一起跟唱。免費使用。",
+      "desc": "在 YouTube 播放日文、韓文歌曲時，自動同步歌詞，並標註假名、羅馬拼音與翻譯，一起跟唱。免費使用，不需要帳號。",
+      "thumbnail": "https://lyric-sync.kentshen.com/og-image.png",
+      "links": [
+        {
+          "label": "visit",
+          "url": "https://lyric-sync.kentshen.com/"
+        }
+      ]
+    },
+    {
       "id": "taiwan-baiyue",
       "category": "services",
       "status": "live",
       "date": "2026.04",
-      "title": "TAIWAN-BAIYUE",
+      "title": "台灣百岳 Taiwan Baiyue",
       "kind": "Website",
-      "tagline": "A Leaflet map for Taiwan's 100 Peaks — satellite imagery, checklists, live weather.",
-      "desc": "A full **Leaflet** map tool for Taiwan's 100 Peaks — satellite imagery, a filter panel, a hiking checklist, a \"dice roll\" random-peak picker, and live weather from Taiwan's CWA via a Cloudflare Worker.",
+      "tagline": "台灣百岳與小百岳地圖，含登山準備清單、難度分級、路線分組，可安裝、可離線使用。",
+      "desc": "台灣百岳與小百岳地圖，含登山準備清單、難度分級、路線分組，可安裝、可離線使用。",
       "thumbnail": "https://taiwan-baiyue.kentshen.com/og-image.png",
       "feedback": "https://www.threads.com/@kentshen77/post/Db0pwl6EzS4",
       "links": [
@@ -99,56 +152,19 @@
       ]
     },
     {
-      "id": "tw-stock-report",
+      "id": "latent",
       "category": "services",
       "status": "live",
-      "date": "2026.07",
-      "title": "TW-STOCK-REPORT",
+      "date": "2026.10",
+      "title": "LATENT 照片・影片整理",
       "kind": "Website",
-      "tagline": "One-click TW/US stock fundamentals, auto-scored into an investment rating.",
-      "desc": "One-click fetch of the latest **TW and US** stock fundamentals — P/E, P/B, dividend yield, gross margin, pre-tax margin, YoY revenue growth — auto-scored into an investment score and health rating, with CSV/JSON export.",
-      "thumbnail": "https://tw-stock-report.kentshen.com/og-image.png",
-      "feedback": "https://www.threads.com/@kentshen77/post/DcHsCdgk9Ok",
+      "tagline": "依拍攝時間與地點自動分組，自動辨識截圖、自拍與模糊照片，批次貼標籤、匯出分資料夾。檔案只在你的瀏覽器處理，不上傳。",
+      "desc": "依拍攝時間與地點自動分組照片與影片，自動辨識截圖、自拍與模糊照片，可批次貼標籤、HEIC 轉 JPG、匯出時分資料夾。所有處理都在你的瀏覽器內完成，檔案不會上傳。",
+      "thumbnail": "https://latent.observer1220.workers.dev/og-image.png",
       "links": [
         {
           "label": "visit",
-          "url": "https://tw-stock-report.observer1220.workers.dev/"
-        }
-      ]
-    },
-    {
-      "id": "undercurrent",
-      "category": "services",
-      "status": "live",
-      "date": "2026.08",
-      "title": "UNDERCURRENT",
-      "kind": "Website",
-      "tagline": "A corporate relationship-graph due-diligence tool built on official registries.",
-      "desc": "A corporate relationship-graph **due-diligence** tool — search by name, company, or business ID to trace directors, managers, and cross-company shareholding chains. Pulls from Taiwan's official **GCIS** registry, foundation/association filings, news, court judgment lookups, and environmental penalty records, with PNG/CSV export.",
-      "thumbnail": "https://undercurrent.kentshen.com/og-image.png?v=3",
-      "feedback": "https://www.threads.com/@kentshen77/post/Dbib4VKDgVL",
-      "links": [
-        {
-          "label": "visit",
-          "url": "https://undercurrent.observer1220.workers.dev/"
-        }
-      ]
-    },
-    {
-      "id": "elsewhere",
-      "category": "services",
-      "status": "live",
-      "date": "2026.09",
-      "title": "ELSEWHERE",
-      "kind": "Website",
-      "tagline": "An AI trip planner covering 171 countries, pick a destination on a 3D globe.",
-      "desc": "An AI trip planner covering 171 countries — pick a destination on a spinning 3D globe. Japan/Korea/Vietnam/Thailand use a **database-backed precision mode** (real attractions, restaurants, and hotels, not AI-invented ones); other countries draw on the AI's own knowledge. Drag-to-reorder itinerary editing, Google Maps route overlays, and shareable short links.",
-      "thumbnail": "https://elsewhere.kentshen.com/og-image.png",
-      "feedback": "https://www.threads.com/@kentshen77/post/DcqatLSEy8J",
-      "links": [
-        {
-          "label": "visit",
-          "url": "https://elsewhere.observer1220.workers.dev/"
+          "url": "https://latent.kentshen.com/"
         }
       ]
     },
@@ -157,49 +173,33 @@
       "category": "services",
       "status": "live",
       "date": "2026.09",
-      "title": "VEIL",
+      "title": "機敏文件去識別化工具",
       "kind": "Website",
-      "tagline": "A sensitive-document redaction tool — masks secrets before you paste to AI.",
-      "desc": "Before you paste logs, config files, or code into an AI chat, **VEIL** auto-masks passwords, private keys, IPs, and personal data — matching runs entirely in your own browser, nothing leaves it, free to use.",
+      "tagline": "把 log、設定檔、程式碼貼給 AI 前，自動遮蔽密碼、私鑰、IP 與個資。規則在你的瀏覽器裡比對，內容不會傳到外部。",
+      "desc": "把 log、設定檔、程式碼貼給 AI 前，自動遮蔽密碼、私鑰、IP 與個資。規則在你的瀏覽器裡比對，內容不會傳到外部。",
       "thumbnail": "https://veil.kentshen.com/og-image.png",
       "links": [
         {
           "label": "visit",
-          "url": "https://veil.observer1220.workers.dev/"
+          "url": "https://veil.kentshen.com/"
         }
       ]
     },
     {
-      "id": "lyric-sync",
-      "category": "extensions",
-      "status": "live",
-      "date": "2026.10",
-      "title": "LYRIC-SYNC",
-      "kind": "Chrome Extension",
-      "tagline": "Synced Japanese lyrics on YouTube — kana, Chinese translation, word-by-word highlight.",
-      "desc": "A floating, draggable lyrics panel for Japanese songs on YouTube — original text, kana readings, Traditional Chinese translation, and **word-by-word highlighting**. Free Chrome extension.",
-      "thumbnail": "https://lyric-sync.kentshen.com/og-image.png",
-      "links": [
-        {
-          "label": "visit",
-          "url": "https://lyric-sync.observer1220.workers.dev/"
-        }
-      ]
-    },
-    {
-      "id": "latent",
+      "id": "tw-stock-report",
       "category": "services",
       "status": "live",
-      "date": "2026.10",
-      "title": "LATENT",
+      "date": "2026.07",
+      "title": "TW STOCK REPORT 台股量化投資報告",
       "kind": "Website",
-      "tagline": "Photo and video organizer — groups by time and place, files never leave your browser.",
-      "desc": "Automatically groups photos and videos by time and place, detects screenshots, selfies and blurry shots, batch tagging, HEIC to JPG, and exports into folders. Everything is processed in your own browser.",
-      "thumbnail": "https://latent.observer1220.workers.dev/og-image.png",
+      "tagline": "六大財務指標自動算分，一眼看出值得研究還是先觀察；同步追蹤匯率、期貨籌碼與 11 位美股大戶最新 13F 持股。免費、免註冊。",
+      "desc": "台股量化投資報告：六大財務指標自動算分，同步追蹤匯率、期貨籌碼與美股大戶 13F 持股動向，免費不用註冊。",
+      "thumbnail": "https://tw-stock-report.kentshen.com/og-image.png",
+      "feedback": "https://www.threads.com/@kentshen77/post/DcHsCdgk9Ok",
       "links": [
         {
           "label": "visit",
-          "url": "https://latent.kentshen.com/"
+          "url": "https://tw-stock-report.kentshen.com/"
         }
       ]
     }

@@ -20,7 +20,7 @@ describe("home", () => {
     expect(screen.queryByText(/個人工作台/)).toBeNull();
     expect(screen.queryByText(/做小而/)).toBeNull();
     expect(screen.queryByText(/我一個人設計/)).toBeNull();
-    expect(document.querySelector(".plate img").getAttribute("alt")).toContain("TAIWAN-BAIYUE");
+    expect(document.querySelector(".plate img").getAttribute("alt")).toContain("UNDERCURRENT");
     expect(document.querySelector('.latest a.entry[href^="/blog/"]')).not.toBeNull();
     expect(document.querySelector('.contact-block a.social-btn.threads[href="https://www.threads.com/@kentshen77"]')).not.toBeNull();
     // No Instagram handle configured yet: no placeholder link may be rendered.
@@ -29,7 +29,7 @@ describe("home", () => {
     expect(document.querySelector('.nav a[href="/blog"]')).not.toBeNull();
     expect(document.querySelectorAll(".plates .plate").length).toBe(7);
 
-    for (const name of ["TAIWAN-BAIYUE", "TW-STOCK-REPORT", "UNDERCURRENT", "ELSEWHERE", "VEIL", "LYRIC-SYNC", "LATENT"]) {
+    for (const name of ["UNDERCURRENT 暗流", "ELSEWHERE 他方", "歌謡同調 Kayo Docho", "台灣百岳 Taiwan Baiyue", "LATENT 照片・影片整理", "機敏文件去識別化工具", "TW STOCK REPORT 台股量化投資報告"]) {
       expect(screen.getByRole("heading", { name, level: 3 })).toBeTruthy();
     }
     expect(screen.queryByText(/JOB-ANALYZER/)).toBeNull();

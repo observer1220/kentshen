@@ -81,14 +81,67 @@
   },
   "products": [
     {
+      "id": "undercurrent",
+      "category": "services",
+      "status": "live",
+      "date": "2026.08",
+      "title": "UNDERCURRENT 暗流",
+      "kind": "網站",
+      "tagline": "把董監事、經理人攤開在同一張關係圖上：查公司、查人名、查統編，一次看清楚表面之下誰跟誰真正有關係。",
+      "desc": "把董監事、經理人攤開在同一張關係圖上：查公司、查人名、查統編，一次看清楚表面之下誰跟誰真正有關係。資料來自政府公開登記。",
+      "thumbnail": "https://undercurrent.kentshen.com/og-image.png?v=3",
+      "feedback": "https://www.threads.com/@kentshen77/post/Dbib4VKDgVL",
+      "links": [
+        {
+          "label": "visit",
+          "url": "https://undercurrent.kentshen.com/"
+        }
+      ]
+    },
+    {
+      "id": "elsewhere",
+      "category": "services",
+      "status": "live",
+      "date": "2026.09",
+      "title": "ELSEWHERE 他方",
+      "kind": "網站",
+      "tagline": "轉動地球，挑一個目的地，AI 免費幫你排好一趟完整行程，含地圖、交通與匯率，幾十秒就好。",
+      "desc": "轉動地球，挑一個目的地，AI 免費幫你排好一趟完整行程，含地圖、交通與匯率，幾十秒就好。",
+      "thumbnail": "https://elsewhere.kentshen.com/og-image.png",
+      "feedback": "https://www.threads.com/@kentshen77/post/DcqatLSEy8J",
+      "links": [
+        {
+          "label": "visit",
+          "url": "https://elsewhere.kentshen.com/"
+        }
+      ]
+    },
+    {
+      "id": "lyric-sync",
+      "category": "extensions",
+      "status": "live",
+      "date": "2026.10",
+      "title": "歌謡同調 Kayo Docho",
+      "kind": "Chrome 外掛",
+      "tagline": "邊聽 YouTube 日韓歌曲，邊看懂歌詞——假名、羅馬拼音、翻譯即時同步，一起跟唱。免費使用。",
+      "desc": "在 YouTube 播放日文、韓文歌曲時，自動同步歌詞，並標註假名、羅馬拼音與翻譯，一起跟唱。免費使用，不需要帳號。",
+      "thumbnail": "https://lyric-sync.kentshen.com/og-image.png",
+      "links": [
+        {
+          "label": "visit",
+          "url": "https://lyric-sync.kentshen.com/"
+        }
+      ]
+    },
+    {
       "id": "taiwan-baiyue",
       "category": "services",
       "status": "live",
       "date": "2026.04",
-      "title": "TAIWAN-BAIYUE",
+      "title": "台灣百岳 Taiwan Baiyue",
       "kind": "網站",
-      "tagline": "Leaflet 地圖版台灣百岳查詢工具，衛星影像、登山清單、即時天氣。",
-      "desc": "完整的 **Leaflet** 地圖版台灣百岳查詢工具——衛星影像、篩選面板、登山勾選清單、擲骰子隨機選山，還有透過 Cloudflare Worker 抓的中央氣象署即時天氣。",
+      "tagline": "台灣百岳與小百岳地圖，含登山準備清單、難度分級、路線分組，可安裝、可離線使用。",
+      "desc": "台灣百岳與小百岳地圖，含登山準備清單、難度分級、路線分組，可安裝、可離線使用。",
       "thumbnail": "https://taiwan-baiyue.kentshen.com/og-image.png",
       "feedback": "https://www.threads.com/@kentshen77/post/Db0pwl6EzS4",
       "links": [
@@ -99,56 +152,19 @@
       ]
     },
     {
-      "id": "tw-stock-report",
+      "id": "latent",
       "category": "services",
       "status": "live",
-      "date": "2026.07",
-      "title": "TW-STOCK-REPORT",
+      "date": "2026.10",
+      "title": "LATENT 照片・影片整理",
       "kind": "網站",
-      "tagline": "一鍵抓取台股與美股基本面數據，自動算出投資評分。",
-      "desc": "一鍵抓取**台股與美股**最新基本面數據——本益比、股價淨值比、殖利率、毛利率、稅前淨利率、營收年增率，自動算出投資評分與體質評估，支援 CSV／JSON 匯出。",
-      "thumbnail": "https://tw-stock-report.kentshen.com/og-image.png",
-      "feedback": "https://www.threads.com/@kentshen77/post/DcHsCdgk9Ok",
+      "tagline": "依拍攝時間與地點自動分組，自動辨識截圖、自拍與模糊照片，批次貼標籤、匯出分資料夾。檔案只在你的瀏覽器處理，不上傳。",
+      "desc": "依拍攝時間與地點自動分組照片與影片，自動辨識截圖、自拍與模糊照片，可批次貼標籤、HEIC 轉 JPG、匯出時分資料夾。所有處理都在你的瀏覽器內完成，檔案不會上傳。",
+      "thumbnail": "https://latent.observer1220.workers.dev/og-image.png",
       "links": [
         {
           "label": "visit",
-          "url": "https://tw-stock-report.observer1220.workers.dev/"
-        }
-      ]
-    },
-    {
-      "id": "undercurrent",
-      "category": "services",
-      "status": "live",
-      "date": "2026.08",
-      "title": "UNDERCURRENT",
-      "kind": "網站",
-      "tagline": "公司與法人關係圖譜盡職調查工具，整合官方登記資料。",
-      "desc": "公司與法人關係圖譜的**盡職調查**工具——輸入姓名／公司名／統編查詢董監事、經理人與跨公司持股鏈，整合經濟部 **GCIS** 官方資料、法人登記公告、新聞、司法院裁判書與環境部裁罰紀錄，支援匯出 PNG／CSV。",
-      "thumbnail": "https://undercurrent.kentshen.com/og-image.png?v=3",
-      "feedback": "https://www.threads.com/@kentshen77/post/Dbib4VKDgVL",
-      "links": [
-        {
-          "label": "visit",
-          "url": "https://undercurrent.observer1220.workers.dev/"
-        }
-      ]
-    },
-    {
-      "id": "elsewhere",
-      "category": "services",
-      "status": "live",
-      "date": "2026.09",
-      "title": "ELSEWHERE",
-      "kind": "網站",
-      "tagline": "AI 行程規劃工具，涵蓋 171 個國家，3D 地球選目的地。",
-      "desc": "AI 行程規劃工具，涵蓋 171 個國家——3D 旋轉地球選目的地，日韓越泰走**資料庫精準模式**（景點、餐廳、住宿不再是 AI 編造），其餘國家走 AI 知識模式，支援拖曳編輯行程表、Google Maps 動線導航與短網址分享。",
-      "thumbnail": "https://elsewhere.kentshen.com/og-image.png",
-      "feedback": "https://www.threads.com/@kentshen77/post/DcqatLSEy8J",
-      "links": [
-        {
-          "label": "visit",
-          "url": "https://elsewhere.observer1220.workers.dev/"
+          "url": "https://latent.kentshen.com/"
         }
       ]
     },
@@ -157,49 +173,33 @@
       "category": "services",
       "status": "live",
       "date": "2026.09",
-      "title": "VEIL",
+      "title": "機敏文件去識別化工具",
       "kind": "網站",
-      "tagline": "機敏文件去識別化工具，貼給 AI 前自動遮蔽密碼與私鑰。",
-      "desc": "把 log、設定檔、程式碼貼給 AI 前，密碼、私鑰、IP、個資**自動遮蔽**——比對全部在你的瀏覽器裡執行，內容不外傳，免費使用。",
+      "tagline": "把 log、設定檔、程式碼貼給 AI 前，自動遮蔽密碼、私鑰、IP 與個資。規則在你的瀏覽器裡比對，內容不會傳到外部。",
+      "desc": "把 log、設定檔、程式碼貼給 AI 前，自動遮蔽密碼、私鑰、IP 與個資。規則在你的瀏覽器裡比對，內容不會傳到外部。",
       "thumbnail": "https://veil.kentshen.com/og-image.png",
       "links": [
         {
           "label": "visit",
-          "url": "https://veil.observer1220.workers.dev/"
+          "url": "https://veil.kentshen.com/"
         }
       ]
     },
     {
-      "id": "lyric-sync",
-      "category": "extensions",
-      "status": "live",
-      "date": "2026.10",
-      "title": "LYRIC-SYNC",
-      "kind": "Chrome 外掛",
-      "tagline": "YouTube 日文歌詞同步翻譯，原文、假名、中文、逐字跑詞。",
-      "desc": "在 YouTube 日文歌曲上顯示可拖曳的浮動歌詞面板——原文、假名、繁體中文翻譯與**逐字跑詞**。免費 Chrome 擴充功能。",
-      "thumbnail": "https://lyric-sync.kentshen.com/og-image.png",
-      "links": [
-        {
-          "label": "visit",
-          "url": "https://lyric-sync.observer1220.workers.dev/"
-        }
-      ]
-    },
-    {
-      "id": "latent",
+      "id": "tw-stock-report",
       "category": "services",
       "status": "live",
-      "date": "2026.10",
-      "title": "LATENT",
+      "date": "2026.07",
+      "title": "TW STOCK REPORT 台股量化投資報告",
       "kind": "網站",
-      "tagline": "照片與影片整理工具，依時間與地點自動分組，檔案不上傳。",
-      "desc": "依拍攝時間與地點自動分組照片與影片，自動辨識截圖、自拍與模糊照片，可批次貼標籤、HEIC 轉 JPG、匯出時分資料夾。所有處理都在你的瀏覽器內完成。",
-      "thumbnail": "https://latent.observer1220.workers.dev/og-image.png",
+      "tagline": "六大財務指標自動算分，一眼看出值得研究還是先觀察；同步追蹤匯率、期貨籌碼與 11 位美股大戶最新 13F 持股。免費、免註冊。",
+      "desc": "台股量化投資報告：六大財務指標自動算分，同步追蹤匯率、期貨籌碼與美股大戶 13F 持股動向，免費不用註冊。",
+      "thumbnail": "https://tw-stock-report.kentshen.com/og-image.png",
+      "feedback": "https://www.threads.com/@kentshen77/post/DcHsCdgk9Ok",
       "links": [
         {
           "label": "visit",
-          "url": "https://latent.kentshen.com/"
+          "url": "https://tw-stock-report.kentshen.com/"
         }
       ]
     }

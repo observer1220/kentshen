@@ -35,13 +35,16 @@
         "works": "Works",
         "deploy": "Hosting",
         "time": "Kaohsiung time"
-      }
+      },
+      "intro": "Hi, I'm Kent.",
+      "bio": "I live in Kaohsiung and build websites and Chrome extensions on my own, from design to deploy. Here are my works and the notes I leave while building them."
     },
     "home": {
       "blog": {
         "title": "Blog",
         "desc": "Lessons, design trade-offs, and notes from building.",
-        "all": "All posts →"
+        "all": "All posts →",
+        "latest": "Latest posts"
       },
       "contact": {
         "title": "Contact",
@@ -59,7 +62,9 @@
       "soon": "Articles are on the way.",
       "back": "← Home",
       "backToList": "← All posts",
-      "notFound": "Post not found"
+      "notFound": "Post not found",
+      "search": "Search posts",
+      "empty": "No matching posts."
     },
     "install": {
       "button": "Add to Home Screen",

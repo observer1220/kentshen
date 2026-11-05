@@ -28,13 +28,13 @@
     <meta name="twitter:title" content="Kent Shen's Workspace" />
     <meta name="twitter:description" content="Kent Shen 的個人工作台：一個人設計、寫程式、上線的小工具與文章。" />
     <meta name="twitter:image" content="https://kentshen.com/og-image.png" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
+    <script>
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "dark" && t !== "light") t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    </script>
 
     <script
       async

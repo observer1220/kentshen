@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocale } from "../i18n/LocaleContext";
 import { Link } from "../router";
 import { posts, getPost, toBlocks, formatDate } from "../blog/posts";
@@ -7,30 +7,45 @@ import Embed from "./Embed";
 export function BlogList() {
   const { data } = useLocale();
   const b = data.ui.blog;
+  const [query, setQuery] = useState("");
+  const q = query.trim().toLowerCase();
+  const shown = posts.filter((p) => !q || [p.title, p.summary, p.tags.join(" ")].join(" ").toLowerCase().includes(q));
 
   return (
     <section className="page blog-page">
       <Link to="/" className="backlink">
         {b.back}
       </Link>
-      <h2 className="page-heading">{b.heading}</h2>
+      <h1 className="page-heading">{b.heading}</h1>
+
+      {posts.length > 0 && (
+        <label className="search">
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder={b.search}
+            aria-label={b.search}
+            autoComplete="off"
+          />
+        </label>
+      )}
 
       {posts.length === 0 ? (
         <p className="muted">{b.soon}</p>
+      ) : shown.length === 0 ? (
+        <p className="muted">{b.empty}</p>
       ) : (
         <ul className="postlist">
-          {posts.map((p) => (
+          {shown.map((p) => (
             <li key={p.slug}>
               <Link to={`/blog/${p.slug}`} className="postrow">
-                <time className="mono" dateTime={p.date}>
+                <time className="mute" dateTime={p.date}>
                   {formatDate(p.date)}
                 </time>
                 <span className="postrow-main">
                   <span className="postrow-title">{p.title}</span>
                   {p.summary && <span className="postrow-summary">{p.summary}</span>}
-                </span>
-                <span className="postrow-arrow" aria-hidden="true">
-                  →
                 </span>
               </Link>
             </li>
@@ -61,7 +76,7 @@ export function BlogPost({ slug }) {
         <Link to="/blog" className="backlink">
           {b.backToList}
         </Link>
-        <h2 className="page-heading">{b.notFound}</h2>
+        <h1 className="page-heading">{b.notFound}</h1>
       </section>
     );
   }
@@ -72,7 +87,7 @@ export function BlogPost({ slug }) {
         {b.backToList}
       </Link>
       <header className="post-head">
-        <time className="mono" dateTime={post.date}>
+        <time className="mute" dateTime={post.date}>
           {formatDate(post.date)}
         </time>
         <h1 className="post-title">{post.title}</h1>

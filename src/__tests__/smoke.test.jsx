@@ -22,8 +22,8 @@ describe("home", () => {
     expect(screen.queryByText(/做小而/)).toBeNull();
     expect(screen.queryByText(/我一個人設計/)).toBeNull();
     expect(document.querySelector(".plate img").getAttribute("alt")).toContain("TAIWAN-BAIYUE");
-    expect(document.querySelector('.pair a.entry[href^="/blog/"]')).not.toBeNull();
-    expect(document.querySelector('.pair a.social-btn.threads[href="https://www.threads.com/@kentshen77"]')).not.toBeNull();
+    expect(document.querySelector('.latest a.entry[href^="/blog/"]')).not.toBeNull();
+    expect(document.querySelector('.contact-block a.social-btn.threads[href="https://www.threads.com/@kentshen77"]')).not.toBeNull();
     // No Instagram handle configured yet: no placeholder link may be rendered.
     expect(document.querySelector('a[href*="instagram.com"]')).toBeNull();
     expect(document.querySelector('.nav a[href="/blog"]')).not.toBeNull();

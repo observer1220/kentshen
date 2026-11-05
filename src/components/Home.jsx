@@ -26,26 +26,22 @@ const pad = (n) => String(n).padStart(2, "0");
 
 function Hero() {
   const { data } = useLocale();
-  const f = data.ui.hero.facts;
+  const h = data.ui.hero;
+  const f = h.facts;
 
   return (
-    <section className="hero">
-      <h1 className="wordmark">
-        Kent <mark>Shen</mark>
-        <b>.</b>
-      </h1>
+    <section className="intro">
+      <h1>{h.intro}</h1>
+      <p>{h.bio}</p>
       <ul className="facts mono">
         <li>
-          <span className="mute">{f.works}</span>
-          <strong>{pad(data.products.length)}</strong>
+          <span className="mute">{f.works}</span> <strong>{pad(data.products.length)}</strong>
         </li>
         <li>
-          <span className="mute">{f.deploy}</span>
-          <strong>Cloudflare Workers</strong>
+          <span className="mute">{f.deploy}</span> <strong>Cloudflare Workers</strong>
         </li>
         <li>
-          <span className="mute">{f.time}</span>
-          <Clock />
+          <span className="mute">{f.time}</span> <Clock />
         </li>
       </ul>
       <SocialLinks />
@@ -70,7 +66,7 @@ function WorksIndex() {
       <div className="sechead">
         <h2 id="works-h">{w.heading}</h2>
         <span className="count mono mute">
-          {pad(items.length)} / {pad(data.products.length)}
+          {items.length} / {data.products.length}
         </span>
         <label className="search">
           <input
@@ -92,21 +88,20 @@ function WorksIndex() {
             const url = p.links && p.links[0] && p.links[0].url;
             return (
               <a key={p.id} className="plate" href={url} target="_blank" rel="noopener">
-                {p.thumbnail && (
+                <time className="plate-date mute" dateTime={p.date}>
+                  {p.date.slice(0, 4)}
+                </time>
+                {p.thumbnail ? (
                   <figure>
                     <img src={p.thumbnail} alt={`${p.title}: ${p.tagline}`} loading="lazy" />
                   </figure>
+                ) : (
+                  <figure aria-hidden="true" />
                 )}
                 <div className="body">
-                  <div className="top">
-                    <span className="no mono">{pad(no)}</span>
-                    <span className="meta mono">
-                      {p.kind} · {p.date.slice(0, 4)}
-                    </span>
-                  </div>
                   <h3>{p.title}</h3>
                   <p>{p.tagline}</p>
-                  <span className="go">{data.ui.linkLabels.visit}</span>
+                  <span className="meta mute">{p.kind}</span>
                 </div>
               </a>
             );
@@ -120,45 +115,40 @@ function WorksIndex() {
 function BlogAndContact() {
   const { data } = useLocale();
   const h = data.ui.home;
-  const latest = posts[0];
+  const latest = posts.slice(0, 5);
 
   return (
-    <section className="pair">
-      <div className="col">
-        <span className="mono mute">{h.blog.title}</span>
-        <h2>
-          <Link to="/blog">{h.blog.title}</Link>
-        </h2>
-        {latest ? (
-          <Link className="entry" to={`/blog/${latest.slug}`}>
-            <time className="mono mute" dateTime={latest.date}>
-              {formatDate(latest.date)}
-            </time>
-            <div>
-              <h3>{latest.title}</h3>
-              {latest.summary && <p>{latest.summary}</p>}
-            </div>
-          </Link>
+    <>
+      <section className="block latest" aria-labelledby="blog-h">
+        <h2 id="blog-h">{h.blog.latest}</h2>
+        {latest.length ? (
+          <div className="entries">
+            {latest.map((p) => (
+              <Link key={p.slug} className="entry" to={`/blog/${p.slug}`}>
+                <time className="mute" dateTime={p.date}>
+                  {formatDate(p.date)}
+                </time>
+                <span className="entry-title">{p.title}</span>
+              </Link>
+            ))}
+          </div>
         ) : (
-          <p className="lead">{h.blog.desc}</p>
+          <p className="muted">{h.blog.desc}</p>
         )}
         <Link className="more" to="/blog">
           {h.blog.all}
         </Link>
-      </div>
+      </section>
 
-      <div className="col contact-col">
-        <span className="mono mute">{h.contact.title}</span>
-        <h2>
-          <Link to="/contact">{h.contact.title}</Link>
-        </h2>
-        <p className="lead">{h.contact.desc}</p>
+      <section className="block contact-block" aria-labelledby="contact-h">
+        <h2 id="contact-h">{h.contact.title}</h2>
+        <p>{h.contact.desc}</p>
         <SocialLinks />
         <Link className="more" to="/contact">
           {h.contact.cta}
         </Link>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 

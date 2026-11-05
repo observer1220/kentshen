@@ -12,7 +12,7 @@ export default function ContactPage() {
         {c.backLabel}
       </Link>
 
-      <h2 className="page-heading">{c.heading}</h2>
+      <h1 className="page-heading">{c.heading}</h1>
       <p className="contact-lead">{c.lead}</p>
       <SocialLinks variant="cards" />
     </section>

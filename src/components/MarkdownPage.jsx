@@ -28,7 +28,7 @@ export default function MarkdownPage({ slug }) {
       </Link>
       <header className="post-head">
         {page.updated && (
-          <time className="mono" dateTime={page.updated}>
+          <time className="mute" dateTime={page.updated}>
             {formatDate(page.updated)}
           </time>
         )}

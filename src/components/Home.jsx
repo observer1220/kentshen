@@ -1,50 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLocale } from "../i18n/LocaleContext";
 import { Link } from "../router";
 import { posts, formatDate } from "../blog/posts";
 import SocialLinks from "./Social";
 
-// Kaohsiung and Taipei share a time zone, so Intl only knows "Asia/Taipei".
-const clockFmt = new Intl.DateTimeFormat("en-GB", {
-  timeZone: "Asia/Taipei",
-  hour: "2-digit",
-  minute: "2-digit",
-  second: "2-digit",
-  hour12: false,
-});
-
-function Clock() {
-  const [now, setNow] = useState(() => clockFmt.format(new Date()));
-  useEffect(() => {
-    const id = setInterval(() => setNow(clockFmt.format(new Date())), 1000);
-    return () => clearInterval(id);
-  }, []);
-  return <strong>{now}</strong>;
-}
-
-const pad = (n) => String(n).padStart(2, "0");
-
 function Hero() {
   const { data } = useLocale();
   const h = data.ui.hero;
-  const f = h.facts;
 
   return (
     <section className="intro">
       <h1>{h.intro}</h1>
       <p>{h.bio}</p>
-      <ul className="facts mono">
-        <li>
-          <span className="mute">{f.works}</span> <strong>{pad(data.products.length)}</strong>
-        </li>
-        <li>
-          <span className="mute">{f.deploy}</span> <strong>Cloudflare Workers</strong>
-        </li>
-        <li>
-          <span className="mute">{f.time}</span> <Clock />
-        </li>
-      </ul>
-      <SocialLinks />
     </section>
   );
 }

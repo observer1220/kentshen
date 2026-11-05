@@ -25,8 +25,8 @@ function InstagramIcon() {
 export default function SocialLinks({ variant = "row" }) {
   const items = [
     { key: "threads", name: "Threads", handle: social.threads, url: `https://www.threads.com/@${social.threads}`, Icon: ThreadsIcon },
-    { key: "instagram", name: "Instagram", handle: social.instagram, url: `https://www.instagram.com/${social.instagram}/`, Icon: InstagramIcon },
-  ].filter((i) => i.handle);
+    { key: "instagram", name: "Instagram", handle: social.instagram, url: social.instagram ? `https://www.instagram.com/${social.instagram}/` : "https://www.instagram.com/", Icon: InstagramIcon },
+  ];
 
   if (variant === "cards") {
     return (
@@ -36,7 +36,7 @@ export default function SocialLinks({ variant = "row" }) {
             <span className="arrow" aria-hidden="true">↗</span>
             <Icon />
             <b>{name}</b>
-            <span>@{handle}</span>
+            {handle ? <span>@{handle}</span> : <span>instagram.com</span>}
           </a>
         ))}
       </div>

@@ -89,8 +89,7 @@
       "kind": "Website",
       "tagline": "A Leaflet map for Taiwan's 100 Peaks — satellite imagery, checklists, live weather.",
       "desc": "A full **Leaflet** map tool for Taiwan's 100 Peaks — satellite imagery, a filter panel, a hiking checklist, a \"dice roll\" random-peak picker, and live weather from Taiwan's CWA via a Cloudflare Worker.",
-      "thumbnail": "/thumbnails/taiwan-baiyue.png",
-      "screenshot": "/screenshots/taiwan-baiyue.png",
+      "thumbnail": "https://taiwan-baiyue.kentshen.com/og-image.png",
       "feedback": "https://www.threads.com/@kentshen77/post/Db0pwl6EzS4",
       "links": [
         {
@@ -108,8 +107,7 @@
       "kind": "Website",
       "tagline": "One-click TW/US stock fundamentals, auto-scored into an investment rating.",
       "desc": "One-click fetch of the latest **TW and US** stock fundamentals — P/E, P/B, dividend yield, gross margin, pre-tax margin, YoY revenue growth — auto-scored into an investment score and health rating, with CSV/JSON export.",
-      "thumbnail": "/thumbnails/tw-stock-report.png",
-      "screenshot": "/screenshots/tw-stock-report.png",
+      "thumbnail": "https://tw-stock-report.kentshen.com/og-image.png",
       "feedback": "https://www.threads.com/@kentshen77/post/DcHsCdgk9Ok",
       "links": [
         {
@@ -127,8 +125,7 @@
       "kind": "Website",
       "tagline": "A corporate relationship-graph due-diligence tool built on official registries.",
       "desc": "A corporate relationship-graph **due-diligence** tool — search by name, company, or business ID to trace directors, managers, and cross-company shareholding chains. Pulls from Taiwan's official **GCIS** registry, foundation/association filings, news, court judgment lookups, and environmental penalty records, with PNG/CSV export.",
-      "thumbnail": "/thumbnails/undercurrent.png",
-      "screenshot": "/screenshots/undercurrent.png",
+      "thumbnail": "https://undercurrent.kentshen.com/og-image.png?v=3",
       "feedback": "https://www.threads.com/@kentshen77/post/Dbib4VKDgVL",
       "links": [
         {
@@ -146,8 +143,7 @@
       "kind": "Website",
       "tagline": "An AI trip planner covering 171 countries, pick a destination on a 3D globe.",
       "desc": "An AI trip planner covering 171 countries — pick a destination on a spinning 3D globe. Japan/Korea/Vietnam/Thailand use a **database-backed precision mode** (real attractions, restaurants, and hotels, not AI-invented ones); other countries draw on the AI's own knowledge. Drag-to-reorder itinerary editing, Google Maps route overlays, and shareable short links.",
-      "thumbnail": "/thumbnails/elsewhere.png",
-      "screenshot": "/screenshots/elsewhere-globe.png",
+      "thumbnail": "https://elsewhere.kentshen.com/og-image.png",
       "feedback": "https://www.threads.com/@kentshen77/post/DcqatLSEy8J",
       "links": [
         {
@@ -165,7 +161,7 @@
       "kind": "Website",
       "tagline": "A sensitive-document redaction tool — masks secrets before you paste to AI.",
       "desc": "Before you paste logs, config files, or code into an AI chat, **VEIL** auto-masks passwords, private keys, IPs, and personal data — matching runs entirely in your own browser, nothing leaves it, free to use.",
-      "thumbnail": "/thumbnails/veil.png",
+      "thumbnail": "https://veil.kentshen.com/og-image.png",
       "links": [
         {
           "label": "visit",
@@ -182,7 +178,7 @@
       "kind": "Chrome Extension",
       "tagline": "Synced Japanese lyrics on YouTube — kana, Chinese translation, word-by-word highlight.",
       "desc": "A floating, draggable lyrics panel for Japanese songs on YouTube — original text, kana readings, Traditional Chinese translation, and **word-by-word highlighting**. Free Chrome extension.",
-      "thumbnail": "/thumbnails/lyric-sync.png",
+      "thumbnail": "https://lyric-sync.kentshen.com/og-image.png",
       "links": [
         {
           "label": "visit",
@@ -199,7 +195,7 @@
       "kind": "Website",
       "tagline": "Photo and video organizer — groups by time and place, files never leave your browser.",
       "desc": "Automatically groups photos and videos by time and place, detects screenshots, selfies and blurry shots, batch tagging, HEIC to JPG, and exports into folders. Everything is processed in your own browser.",
-      "thumbnail": "/thumbnails/latent.png",
+      "thumbnail": "https://latent.observer1220.workers.dev/og-image.png",
       "links": [
         {
           "label": "visit",

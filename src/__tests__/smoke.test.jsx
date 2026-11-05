@@ -16,7 +16,6 @@ describe("home", () => {
     render(<App />);
     expect(document.querySelector(".brand").textContent).toBe("Kent Shen");
     expect(document.documentElement.getAttribute("lang")).toBe("zh-Hant");
-    expect(screen.getByText("高雄時間")).toBeTruthy();
     expect(screen.queryByText(/台北/)).toBeNull();
     expect(screen.queryByText(/個人工作台/)).toBeNull();
     expect(screen.queryByText(/做小而/)).toBeNull();
@@ -25,7 +24,8 @@ describe("home", () => {
     expect(document.querySelector('.latest a.entry[href^="/blog/"]')).not.toBeNull();
     expect(document.querySelector('.contact-block a.social-btn.threads[href="https://www.threads.com/@kentshen77"]')).not.toBeNull();
     // No Instagram handle configured yet: no placeholder link may be rendered.
-    expect(document.querySelector('a[href*="instagram.com"]')).toBeNull();
+    expect(document.querySelector(".contact-block a.social-btn.instagram")).not.toBeNull();
+    expect(document.querySelector(".intro .social-row")).toBeNull();
     expect(document.querySelector('.nav a[href="/blog"]')).not.toBeNull();
     expect(document.querySelectorAll(".plates .plate").length).toBe(7);
 

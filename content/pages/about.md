@@ -12,13 +12,13 @@ updated: 2026-11-03
 
 目前上線的作品：
 
-- **TAIWAN-BAIYUE**：地圖版的台灣百岳查詢工具，有衛星影像、篩選面板與登山準備清單；天氣則連到中央氣象署的官方山區預報。
-- **TW-STOCK-REPORT**：一鍵抓取台股與美股的基本面數據，自動算出投資評分。
-- **UNDERCURRENT**：公司關係圖譜工具，用經濟部公開的董監事資料，把一個人或一間公司的關聯攤開在同一張圖上。
-- **ELSEWHERE**：AI 行程規劃工具。日本、韓國、越南、泰國的景點與餐廳從資料庫挑選，不讓 AI 憑空編造。
-- **VEIL**：機敏文件去識別化工具，貼給 AI 之前自動遮蔽密碼、私鑰與個資，全部在瀏覽器裡處理。
-- **LYRIC-SYNC**：YouTube 日文歌曲的歌詞同步 Chrome 外掛，顯示原文、假名與中文翻譯。
-- **LATENT**：最新的作品。
+- **UNDERCURRENT 暗流**：公司關係圖譜工具，用政府公開的公司登記與董監事資料，把一個人或一間公司的關聯攤開在同一張圖上。（[使用教學](/blog/undercurrent-how-to-use)）
+- **ELSEWHERE 他方**：AI 行程規劃工具。日本、韓國、越南、泰國的景點與餐廳從資料庫挑選，不讓 AI 憑空編造。（[使用教學](/blog/elsewhere-plan-a-trip)）
+- **歌謡同調 Kayo Docho**：YouTube 日韓歌曲的歌詞同步 Chrome 外掛，顯示假名、羅馬拼音與翻譯，還能變速與降 Key 練唱。（[使用教學](/blog/kayo-docho-sing-japanese-songs)）
+- **台灣百岳 Taiwan Baiyue**：地圖版的台灣百岳查詢工具，有篩選、離線地圖、登山準備清單與留守人計畫書；天氣則連到官方的山區預報。（[使用教學](/blog/taiwan-baiyue-plan-a-hike)）
+- **LATENT 照片顯影**：依拍攝時間與地點自動整理照片，全部在瀏覽器裡處理，不上傳。（[使用教學](/blog/latent-sort-travel-photos)）
+- **VEIL 紗**：機敏文件去識別化工具，貼給 AI 之前自動遮蔽密碼、私鑰與個資，全部在瀏覽器裡處理。（[使用教學](/blog/veil-before-pasting-to-ai)）
+- **BENCHMARK 基準**：台股量化投資報告，七大財務指標自動算分，同步追蹤匯率、期貨籌碼與美股大戶 13F 持股。（[使用教學](/blog/tw-stock-report-weights-and-13f)）
 
 每個作品在[首頁](/#works)都有介紹與連結。
 
@@ -26,7 +26,7 @@ updated: 2026-11-03
 
 所有作品都部署在 Cloudflare Workers，需要資料庫的用 D1，推到 GitHub 就自動上線。需要登入的幾個工具共用同一套帳號系統，在一個站登入，其他站也認得你。
 
-做法的細節我會寫在 [Blog](/blog)，例如[一個人怎麼維護六個小工具](/blog/six-tools-one-account)。
+做法的細節我會寫在 [Blog](/blog)，例如[我怎麼挑選要做哪些工具](/blog/small-enough-to-maintain)。
 
 ## 資料與隱私
 

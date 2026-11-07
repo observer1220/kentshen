@@ -25,6 +25,8 @@ const crumbs = (...items) => ({
   itemListElement: items.map(([name, path], i) => ({ "@type": "ListItem", position: i + 1, name, item: ORIGIN + path })),
 });
 const latest = posts[0] ? posts[0].date : "";
+// Google wants a full ISO 8601 time with a zone; posts only carry a date (Taiwan time).
+const isoTime = (d) => `${d}T00:00:00+08:00`;
 
 // Every URL that gets its own static HTML file, with the title, description and
 // structured data that go into its <head>. Search engines and link previews read
@@ -75,7 +77,7 @@ export function routes() {
       title: `${p.title} — ${site}`,
       description: p.summary || zh.meta.description,
       type: "article",
-      published: p.date,
+      published: isoTime(p.date),
       tags: p.tags,
       lastmod: p.date,
       jsonld: [
@@ -83,8 +85,8 @@ export function routes() {
           "@type": "BlogPosting",
           headline: p.title,
           description: p.summary,
-          datePublished: p.date,
-          dateModified: p.date,
+          datePublished: isoTime(p.date),
+          dateModified: isoTime(p.date),
           inLanguage: "zh-Hant",
           keywords: p.tags.join(", "),
           url,

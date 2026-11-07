@@ -29,7 +29,7 @@ describe("home", () => {
     expect(document.querySelector('.nav a[href="/blog"]')).not.toBeNull();
     expect(document.querySelectorAll(".plates .plate").length).toBe(7);
 
-    for (const name of ["UNDERCURRENT — 暗流｜洞察表象之下的企業關係", "ELSEWHERE－他方 | 自動化旅遊排程服務", "歌謡同調 Kayo Docho", "台灣百岳 Taiwan Baiyue｜一張地圖規劃你的百岳行程", "LATENT — 照片・影片整理", "機敏文件去識別化工具", "TW STOCK REPORT｜台股量化投資報告"]) {
+    for (const name of ["UNDERCURRENT — 暗流｜洞察表象之下的企業關係", "ELSEWHERE－他方 | 自動化旅遊排程服務", "歌謡同調 Kayo Docho", "台灣百岳 Taiwan Baiyue｜一張地圖規劃你的百岳行程", "LATENT — 照片顯影｜照片不離開你的裝置，也能整理得井井有條", "VEIL — 紗｜為機敏資料罩上薄紗的去識別化工具", "BENCHMARK — 基準｜用數字衡量台股的真實價值"]) {
       expect(screen.getByRole("heading", { name, level: 3 })).toBeTruthy();
     }
     expect(screen.queryByText(/JOB-ANALYZER/)).toBeNull();
@@ -40,7 +40,7 @@ describe("home", () => {
   it("filters works with the search box", () => {
     render(<App />);
     const search = screen.getByRole("searchbox");
-    fireEvent.change(search, { target: { value: "stock" } });
+    fireEvent.change(search, { target: { value: "benchmark" } });
     expect(document.querySelectorAll(".plates .plate").length).toBe(1);
     fireEvent.change(search, { target: { value: "zzzz-no-such-work" } });
     expect(document.querySelectorAll(".plates .plate").length).toBe(0);
@@ -57,8 +57,8 @@ describe("blog", () => {
     expect(document.querySelector(".postrow time").textContent).toMatch(/^\d{4}\.\d{2}\.\d{2}$/);
 
     // Open the post that carries embeds, not just whichever is newest.
-    fireEvent.click(document.querySelector('.postrow[href="/blog/six-tools-one-account"]'));
-    expect(window.location.pathname).toBe("/blog/six-tools-one-account");
+    fireEvent.click(document.querySelector('.postrow[href="/blog/undercurrent-how-to-use"]'));
+    expect(window.location.pathname).toBe("/blog/undercurrent-how-to-use");
     expect(document.querySelector(".post-title")).not.toBeNull();
     expect(document.querySelector(".prose h2")).not.toBeNull();
     expect(document.querySelector(".embed-threads blockquote")).not.toBeNull();
@@ -66,7 +66,7 @@ describe("blog", () => {
     expect(document.querySelector('.post-meta a[href="/about"]')).not.toBeNull();
     const related = [...document.querySelectorAll(".related .postrow")].map((a) => a.getAttribute("href"));
     expect(related.length).toBe(3);
-    expect(related).not.toContain("/blog/six-tools-one-account");
+    expect(related).not.toContain("/blog/undercurrent-how-to-use");
 
     fireEvent.click(screen.getByText("← 所有文章"));
     expect(window.location.pathname).toBe("/blog");

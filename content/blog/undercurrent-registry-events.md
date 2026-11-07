@@ -1,7 +1,7 @@
 ---
 title: 做公司關係圖譜時學到的事：登記資料是「事件」，不是「現況」
 date: 2026-10-16
-tags: Undercurrent, 資料工程, D1
+tags: Undercurrent, 公司關係, 產品設計
 summary: Undercurrent 整合經濟部與司法院的開放資料。這篇談資料來源的限制、為什麼把官方資料搬進自己的資料庫，以及一次 N+1 查詢的優化。
 ---
 

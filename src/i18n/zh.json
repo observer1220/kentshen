@@ -64,7 +64,11 @@
       "backToList": "← 所有文章",
       "notFound": "找不到這篇文章",
       "search": "搜尋文章",
-      "empty": "找不到符合的文章。"
+      "empty": "找不到符合的文章。",
+      "related": "延伸閱讀",
+      "by": "Kent Shen",
+      "about": "關於作者",
+      "read": "分鐘閱讀"
     },
     "install": {
       "button": "加入主畫面",

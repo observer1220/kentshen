@@ -85,3 +85,26 @@ export function formatDate(iso) {
   const m = iso.match(/^(\d{4})-(\d{2})-(\d{2})/);
   return m ? `${m[1]}.${m[2]}.${m[3]}` : iso;
 }
+
+// Rough reading time: Chinese reads ~400 characters a minute; Latin words count as one.
+export function readingMinutes(body) {
+  const text = body.replace(/```[\s\S]*?```/g, " ").replace(/::embed\[[^\]]*\]/g, " ");
+  const cjk = (text.match(/[㐀-鿿]/g) || []).length;
+  const words = (text.replace(/[㐀-鿿]/g, " ").match(/[A-Za-z0-9]+/g) || []).length;
+  return Math.max(1, Math.round(cjk / 400 + words / 200));
+}
+
+// Posts that share the most tags with this one (ties broken by newest), padded with
+// the latest posts so every article links to a few others.
+export function relatedPosts(slug, n = 3) {
+  const post = getPost(slug);
+  if (!post) return [];
+  const others = posts.filter((p) => p.slug !== slug);
+  const scored = others
+    .map((p) => ({ p, s: p.tags.filter((t) => post.tags.includes(t) && t !== "開發筆記").length }))
+    .filter((x) => x.s > 0)
+    .sort((a, b) => b.s - a.s || (a.p.date < b.p.date ? 1 : -1))
+    .map((x) => x.p);
+  for (const p of others) if (!scored.includes(p)) scored.push(p);
+  return scored.slice(0, n);
+}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocale } from "../i18n/LocaleContext";
 import { Link } from "../router";
-import { posts, getPost, toBlocks, formatDate } from "../blog/posts";
+import { posts, getPost, toBlocks, formatDate, readingMinutes, relatedPosts } from "../blog/posts";
 import Embed from "./Embed";
 
 export function BlogList() {
@@ -87,9 +87,15 @@ export function BlogPost({ slug }) {
         {b.backToList}
       </Link>
       <header className="post-head">
-        <time className="mute" dateTime={post.date}>
-          {formatDate(post.date)}
-        </time>
+        <p className="post-meta mute">
+          <time dateTime={post.date}>{formatDate(post.date)}</time>
+          <span aria-hidden="true"> · </span>
+          <Link to="/about" rel="author">{b.by}</Link>
+          <span aria-hidden="true"> · </span>
+          <span>
+            {readingMinutes(post.body)} {b.read}
+          </span>
+        </p>
         <h1 className="post-title">{post.title}</h1>
         {post.tags.length > 0 && (
           <ul className="tags">
@@ -109,6 +115,27 @@ export function BlogPost({ slug }) {
           )
         )}
       </div>
+
+      <aside className="related" aria-labelledby="related-h">
+        <h2 id="related-h">{b.related}</h2>
+        <ul className="postlist">
+          {relatedPosts(post.slug).map((p) => (
+            <li key={p.slug}>
+              <Link to={`/blog/${p.slug}`} className="postrow">
+                <time className="mute" dateTime={p.date}>
+                  {formatDate(p.date)}
+                </time>
+                <span className="postrow-main">
+                  <span className="postrow-title">{p.title}</span>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <Link to="/blog" className="more">
+          {b.backToList.replace("← ", "")} →
+        </Link>
+      </aside>
     </article>
   );
 }

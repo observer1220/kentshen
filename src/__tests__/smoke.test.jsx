@@ -63,6 +63,10 @@ describe("blog", () => {
     expect(document.querySelector(".prose h2")).not.toBeNull();
     expect(document.querySelector(".embed-threads blockquote")).not.toBeNull();
     expect(document.querySelector(".embed-card")).not.toBeNull();
+    expect(document.querySelector('.post-meta a[href="/about"]')).not.toBeNull();
+    const related = [...document.querySelectorAll(".related .postrow")].map((a) => a.getAttribute("href"));
+    expect(related.length).toBe(3);
+    expect(related).not.toContain("/blog/six-tools-one-account");
 
     fireEvent.click(screen.getByText("← 所有文章"));
     expect(window.location.pathname).toBe("/blog");

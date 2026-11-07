@@ -64,7 +64,11 @@
       "backToList": "← All posts",
       "notFound": "Post not found",
       "search": "Search posts",
-      "empty": "No matching posts."
+      "empty": "No matching posts.",
+      "related": "Related posts",
+      "by": "Kent Shen",
+      "about": "About the author",
+      "read": "min read"
     },
     "install": {
       "button": "Add to Home Screen",

@@ -29,7 +29,7 @@ describe("home", () => {
     expect(document.querySelector('.nav a[href="/blog"]')).not.toBeNull();
     expect(document.querySelectorAll(".plates .plate").length).toBe(7);
 
-    for (const name of ["UNDERCURRENT 暗流", "ELSEWHERE 他方", "歌謡同調 Kayo Docho", "台灣百岳 Taiwan Baiyue", "LATENT 照片・影片整理", "機敏文件去識別化工具", "TW STOCK REPORT 台股量化投資報告"]) {
+    for (const name of ["UNDERCURRENT — 暗流｜洞察表象之下的企業關係", "ELSEWHERE－他方 | 自動化旅遊排程服務", "歌謡同調 Kayo Docho", "台灣百岳 Taiwan Baiyue｜一張地圖規劃你的百岳行程", "LATENT — 照片・影片整理", "機敏文件去識別化工具", "TW STOCK REPORT｜台股量化投資報告"]) {
       expect(screen.getByRole("heading", { name, level: 3 })).toBeTruthy();
     }
     expect(screen.queryByText(/JOB-ANALYZER/)).toBeNull();

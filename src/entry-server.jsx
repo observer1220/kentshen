@@ -67,7 +67,7 @@ export function routes() {
   ];
   for (const p of pages) {
     const jsonld = [crumbs(["首頁", "/"], [p.title, `/${p.slug}`])];
-    if (p.slug === "about") jsonld.push({ "@type": "ProfilePage", mainEntity: person, dateModified: p.updated || undefined });
+    if (p.slug === "about") jsonld.push({ "@type": "ProfilePage", mainEntity: person, dateModified: p.updated ? isoTime(p.updated) : undefined });
     list.push({ path: `/${p.slug}`, title: `${p.title} — ${site}`, description: p.summary || zh.meta.description, lastmod: p.updated, jsonld });
   }
   for (const p of posts) {

@@ -15,7 +15,24 @@ function Page() {
   if (path === "/contact") return <ContactPage />;
   if (path === "/about") return <MarkdownPage slug="about" />;
   if (path === "/privacy") return <MarkdownPage slug="privacy" />;
-  return <Home />;
+  if (path === "/") return <Home />;
+  return <NotFound />;
+}
+
+function NotFound() {
+  const { data } = useLocale();
+  const n = data.ui.notFound;
+  return (
+    <section className="page">
+      <h1 className="page-heading">{n.heading}</h1>
+      <p className="contact-lead">{n.desc}</p>
+      <p>
+        <Link to="/">{n.home}</Link>
+        {" · "}
+        <Link to="/blog">{n.blog}</Link>
+      </p>
+    </section>
+  );
 }
 
 function FooterLinks() {

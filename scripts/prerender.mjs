@@ -94,9 +94,10 @@ writeFileSync(
     `\n</channel>\n</rss>\n`
 );
 
-// A real 404 page (served by the Worker with status 404 for unknown /blog/ slugs),
-// kept out of search results.
-const notFound = pageHtml({ path: "/blog/__not-found__", title: "找不到這篇文章 — Kent Shen's Workspace", description: "這個網址沒有文章。" })
+// The 404 page: the asset layer serves it with status 404 for any unknown path
+// (not_found_handling: "404-page"), and the Worker does the same for unknown
+// /blog/ slugs. Kept out of search results.
+const notFound = pageHtml({ path: "/__not-found__", title: "找不到這個頁面 — Kent Shen's Workspace", description: "這個網址沒有內容。" })
   .replace(/<link rel="canonical" href="[^"]*"\s*\/?>/, '<meta name="robots" content="noindex" />');
 writeFileSync(join(dist, "404.html"), notFound);
 

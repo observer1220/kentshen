@@ -81,6 +81,12 @@
       "heading": "Contact",
       "lead": "Feedback, collaboration, custom work, or just hello — message me directly.",
       "backLabel": "← Back"
+    },
+    "notFound": {
+      "heading": "Page not found",
+      "desc": "Nothing lives at this address. It may be a typo, or the post was removed.",
+      "home": "Home",
+      "blog": "All posts"
     }
   },
   "products": [

@@ -4,8 +4,9 @@ const STATIC_ROUTES = ["/", "/blog", "/contact", "/about", "/privacy"];
 
 export function normalizePath(pathname) {
   const p = pathname.replace(/\/+$/, "") || "/";
+  if (p === "/index.html") return "/";
   if (STATIC_ROUTES.includes(p) || /^\/blog\/[^/]+$/.test(p)) return p;
-  return "/";
+  return "/404"; // unknown path: App renders the not-found page
 }
 
 function currentPath() {

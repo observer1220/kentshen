@@ -77,6 +77,13 @@ describe("blog", () => {
     render(<App />);
     expect(screen.getByText("找不到這篇文章")).toBeTruthy();
   });
+
+  it("shows a not-found page for an unknown path instead of the home page", () => {
+    window.history.pushState({}, "", "/no-such-page");
+    render(<App />);
+    expect(screen.getByText("找不到這個頁面")).toBeTruthy();
+    expect(document.querySelector(".plates")).toBeNull();
+  });
 });
 
 describe("toBlocks", () => {

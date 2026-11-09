@@ -35,4 +35,4 @@ Undercurrent 早期查詢是即時呼叫外部 API。這有兩個問題：速度
 
 關係圖譜呈現的是公開登記的資料，同名同姓的人很常見。我加了右鍵隱藏節點的功能，讓使用者把混進來的無關公司直接點掉，這只影響顯示，不會動到資料庫。圖譜只是線索，不是結論。
 
-你可以到 [Undercurrent](https://undercurrent.observer1220.workers.dev/) 試用。
+你可以到 [Undercurrent](https://undercurrent.kentshen.com/) 試用。

@@ -41,4 +41,4 @@ summary: TW-STOCK-REPORT 會一次抓出六個常見的基本面數字。這篇�
 
 報表的資料來源是公開的財務數據，可能有時間差，也可能因為會計準則或資料更新時機而與其他網站略有出入。重要的決定之前，請以公司公告的財報與公開資訊觀測站為準。報表支援匯出 CSV 與 JSON，方便你放進自己的試算表裡做進一步的比較。
 
-工具在這裡：[TW-STOCK-REPORT](https://tw-stock-report.observer1220.workers.dev/)。
+工具在這裡：[BENCHMARK](https://benchmark.kentshen.com/)。

@@ -39,4 +39,4 @@ Lyric Sync 是一個 Chrome 外掛，在 YouTube 日文歌曲上顯示可拖曳�
 
 這些處理全部在你的瀏覽器本機完成，不會上傳任何音訊。
 
-想試試看可以到 [Lyric Sync 的介紹頁](https://lyric-sync.observer1220.workers.dev/)。下一篇會談假名讀音為什麼不能保證 100% 正確。
+想試試看可以到 [Lyric Sync 的介紹頁](https://lyric-sync.kentshen.com/)。下一篇會談假名讀音為什麼不能保證 100% 正確。

@@ -7,7 +7,7 @@ summary: 投資分數是可以調的。這篇說明怎麼依自己的偏好改�
 
 這個工具現在叫 BENCHMARK（原本的 TW Stock Report）。我之前寫過一篇介紹它用到的[基本面指標](/blog/tw-stock-report-fundamentals)。這篇談的是使用方式：同樣一份數據，不同的人在意的東西不一樣，所以分數不應該是固定的。
 
-::embed[https://tw-stock-report.kentshen.com/ | BENCHMARK — 基準｜用數字衡量台股的真實價值 | 七大財務指標自動算分，同步追蹤匯率、期貨籌碼與美股大戶 13F 持股。免費、免註冊。]
+::embed[https://benchmark.kentshen.com/ | BENCHMARK — 基準｜用數字衡量台股的真實價值 | 七大財務指標自動算分，同步追蹤匯率、期貨籌碼與美股大戶 13F 持股。免費、免註冊。]
 
 ## 先抓數據
 

@@ -170,7 +170,7 @@
       "kind": "Website",
       "tagline": "依拍攝時間與地點自動分組，自動辨識截圖、自拍與模糊照片，批次貼標籤、匯出分資料夾。檔案只在你的瀏覽器處理，不上傳。",
       "desc": "依拍攝時間與地點自動分組照片與影片，自動辨識截圖、自拍與模糊照片，可批次貼標籤、HEIC 轉 JPG、匯出時分資料夾。所有處理都在你的瀏覽器內完成，檔案不會上傳。",
-      "thumbnail": "https://latent.observer1220.workers.dev/og-image.png",
+      "thumbnail": "https://latent.kentshen.com/og-image.png",
       "links": [
         {
           "label": "visit",
@@ -202,14 +202,14 @@
       "date": "2026.07",
       "title": "BENCHMARK — 基準｜用數字衡量台股的真實價值",
       "kind": "Website",
-      "tagline": "七大財務指標自動算分，一眼看出值得研究還是先觀察；同步追蹤匯率、期貨籌碼與 11 位美股大戶最新 13F 持股。免費、免註冊。",
+      "tagline": "上市＋上櫃近 2000 檔，七大財務指標拆解計分並標示配息、虧損等風險；同步整理外資動向、匯率、期貨籌碼與 11 位美股大戶 13F 持股。免費、免註冊。",
       "desc": "台股量化投資報告：七大財務指標自動算分，同步追蹤匯率、期貨籌碼與美股大戶 13F 持股動向，免費不用註冊。",
-      "thumbnail": "https://tw-stock-report.kentshen.com/og-image.png",
+      "thumbnail": "https://benchmark.kentshen.com/og-image.png",
       "feedback": "https://www.threads.com/@kentshen77/post/DcHsCdgk9Ok",
       "links": [
         {
           "label": "visit",
-          "url": "https://tw-stock-report.kentshen.com/"
+          "url": "https://benchmark.kentshen.com/"
         }
       ]
     }

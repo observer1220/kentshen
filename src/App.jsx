@@ -3,6 +3,7 @@ import { RouterProvider, useRouter, Link } from "./router";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import { BlogList, BlogPost } from "./components/BlogPage";
+import WorksPage from "./components/WorksPage";
 import ContactPage from "./components/ContactPage";
 import MarkdownPage from "./components/MarkdownPage";
 import { useLocale } from "./i18n/LocaleContext";
@@ -12,6 +13,7 @@ function Page() {
   const { path } = useRouter();
   if (path === "/blog") return <BlogList />;
   if (path.startsWith("/blog/")) return <BlogPost slug={decodeURIComponent(path.slice(6))} />;
+  if (path.startsWith("/works/")) return <WorksPage slug={decodeURIComponent(path.slice(7))} />;
   if (path === "/contact") return <ContactPage />;
   if (path === "/about") return <MarkdownPage slug="about" />;
   if (path === "/privacy") return <MarkdownPage slug="privacy" />;

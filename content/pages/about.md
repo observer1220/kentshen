@@ -1,7 +1,7 @@
 ---
 title: 關於
-summary: Kent Shen 是住在高雄的個人開發者，一個人設計、寫程式、上線小工具，全部部署在 Cloudflare Workers。
-updated: 2026-11-03
+summary: Kent Shen 是住在高雄的個人開發者，一個人設計、寫程式、上線小工具，全部部署在 Cloudflare。
+updated: 2026-11-13
 ---
 
 我是 Kent Shen，住在高雄，一個人設計、寫程式、上線小工具。這個網站是我的工作台：放我做過的作品，也記錄做的過程中踩過的坑與設計上的取捨。
@@ -20,11 +20,11 @@ updated: 2026-11-03
 - **VEIL 紗**：機敏文件去識別化工具，貼給 AI 之前自動遮蔽密碼、私鑰與個資，全部在瀏覽器裡處理。（[使用教學](/blog/veil-before-pasting-to-ai)）
 - **BENCHMARK 基準**：台股量化投資報告，七大財務指標自動算分，同步追蹤匯率、期貨籌碼與美股大戶 13F 持股。（[使用教學](/blog/tw-stock-report-weights-and-13f)）
 
-每個作品在[首頁](/#works)都有介紹與連結。
+每個作品在[首頁](/#works)都有簡介與連結，點「介紹與教學」可以看完整的功能、資料來源與限制說明。
 
 ## 怎麼做
 
-所有作品都部署在 Cloudflare Workers，需要資料庫的用 D1，推到 GitHub 就自動上線。需要登入的幾個工具共用同一套帳號系統，在一個站登入，其他站也認得你。
+這個網站與我的作品都部署在 Cloudflare 上，程式推到 GitHub 就會自動上線。
 
 做法的細節我會寫在 [Blog](/blog)，例如[我怎麼挑選要做哪些工具](/blog/small-enough-to-maintain)。
 
@@ -34,4 +34,4 @@ updated: 2026-11-03
 
 ## 聯絡
 
-產品回饋、合作或客製化需求，可以寄信到 [observer1220@gmail.com](mailto:observer1220@gmail.com)，或使用[聯絡表單](/contact)。
+產品回饋、合作或客製化需求，可以寄信到 [observer1220@gmail.com](mailto:observer1220@gmail.com)，或到[聯絡頁](/contact)用 Threads、Instagram 私訊我。

@@ -42,6 +42,24 @@ export const pages = Object.entries(pageFiles).map(([path, raw]) => {
   };
 });
 
+// Product write-ups: content/works/<product id>.md (same format as pages).
+const workFiles = import.meta.glob("../../content/works/*.md", { query: "?raw", import: "default", eager: true });
+
+export const works = Object.entries(workFiles).map(([path, raw]) => {
+  const { meta, body } = parseFrontmatter(raw);
+  return {
+    slug: path.split("/").pop().replace(/\.md$/, ""),
+    title: meta.title || "(untitled)",
+    summary: meta.summary || "",
+    updated: meta.updated || "",
+    body,
+  };
+});
+
+export function getWork(slug) {
+  return works.find((w) => w.slug === slug) || null;
+}
+
 export function getPage(slug) {
   return pages.find((p) => p.slug === slug) || null;
 }

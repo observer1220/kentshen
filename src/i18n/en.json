@@ -55,7 +55,11 @@
     "works": {
       "heading": "Works",
       "search": "Search by name or keyword",
-      "empty": "No matching works."
+      "empty": "No matching works.",
+      "back": "← Works",
+      "visit": "Open the site",
+      "more": "Other works",
+      "about": "About & guides →"
     },
     "blog": {
       "heading": "Blog",
@@ -80,7 +84,8 @@
     "contact": {
       "heading": "Contact",
       "lead": "Feedback, collaboration, custom work, or just hello — message me directly.",
-      "backLabel": "← Back"
+      "backLabel": "← Back",
+      "mailLead": "Or email me: "
     },
     "notFound": {
       "heading": "Page not found",

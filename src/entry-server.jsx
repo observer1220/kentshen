@@ -2,7 +2,7 @@
 // Not shipped to the browser; `vite build --ssr` bundles it into dist-ssr/.
 import { renderToString } from "react-dom/server";
 import App from "./App.jsx";
-import { posts, pages } from "./blog/posts";
+import { posts, pages, works } from "./blog/posts";
 import zh from "./i18n/zh.json";
 
 export function render(path) {
@@ -69,6 +69,34 @@ export function routes() {
     const jsonld = [crumbs(["首頁", "/"], [p.title, `/${p.slug}`])];
     if (p.slug === "about") jsonld.push({ "@type": "ProfilePage", mainEntity: person, dateModified: p.updated ? isoTime(p.updated) : undefined });
     list.push({ path: `/${p.slug}`, title: `${p.title} — ${site}`, description: p.summary || zh.meta.description, lastmod: p.updated, jsonld });
+  }
+  for (const w of works) {
+    const prod = zh.products.find((x) => x.id === w.slug);
+    if (!prod) continue;
+    const url = `${ORIGIN}/works/${w.slug}`;
+    list.push({
+      path: `/works/${w.slug}`,
+      title: `${w.title}｜${prod.tagline.split("，")[0].split("。")[0]} — ${site}`,
+      description: w.summary,
+      lastmod: w.updated,
+      jsonld: [
+        {
+          "@type": "SoftwareApplication",
+          name: w.title,
+          description: w.summary,
+          url,
+          image: prod.thumbnail,
+          sameAs: prod.links[0].url,
+          inLanguage: "zh-Hant",
+          applicationCategory: prod.kind === "Chrome 外掛" ? "BrowserApplication" : "WebApplication",
+          operatingSystem: prod.kind === "Chrome 外掛" ? "Chrome" : "Web",
+          offers: { "@type": "Offer", price: "0", priceCurrency: "TWD" },
+          author: person,
+          dateModified: isoTime(w.updated),
+        },
+        crumbs(["首頁", "/"], ["作品", "/#works"], [w.title, `/works/${w.slug}`]),
+      ],
+    });
   }
   for (const p of posts) {
     const url = `${ORIGIN}/blog/${p.slug}`;

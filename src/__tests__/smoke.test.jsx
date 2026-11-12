@@ -20,7 +20,8 @@ describe("home", () => {
     expect(screen.queryByText(/個人工作台/)).toBeNull();
     expect(screen.queryByText(/做小而/)).toBeNull();
     expect(screen.queryByText(/我一個人設計/)).toBeNull();
-    expect(document.querySelector(".plate img").getAttribute("alt")).toContain("UNDERCURRENT");
+    expect(document.querySelector(".plate h3 a").textContent).toContain("UNDERCURRENT");
+    expect(document.querySelector(".plate .plate-more").getAttribute("href")).toBe("/works/undercurrent");
     expect(document.querySelector('.latest a.entry[href^="/blog/"]')).not.toBeNull();
     expect(document.querySelector('.contact-block a.social-btn.threads[href="https://www.threads.com/@kentshen77"]')).not.toBeNull();
     // No Instagram handle configured yet: no placeholder link may be rendered.
@@ -45,6 +46,19 @@ describe("home", () => {
     fireEvent.change(search, { target: { value: "zzzz-no-such-work" } });
     expect(document.querySelectorAll(".plates .plate").length).toBe(0);
     expect(screen.getByText("找不到符合的作品。")).toBeTruthy();
+  });
+});
+
+describe("works pages", () => {
+  it("opens a product write-up from the home list and links back", () => {
+    window.history.pushState({}, "", "/");
+    render(<App />);
+    fireEvent.click(document.querySelector(".plate .plate-more"));
+    expect(window.location.pathname).toBe("/works/undercurrent");
+    expect(document.querySelector(".post-title").textContent).toContain("UNDERCURRENT");
+    expect(document.querySelector(".work-visit").getAttribute("href")).toBe("https://undercurrent.kentshen.com/");
+    expect(document.querySelectorAll(".prose h2").length).toBeGreaterThan(2);
+    expect(document.querySelectorAll(".related .postrow").length).toBe(6);
   });
 });
 

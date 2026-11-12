@@ -54,23 +54,28 @@ function WorksIndex() {
           items.map(({ p, no }) => {
             const url = p.links && p.links[0] && p.links[0].url;
             return (
-              <a key={p.id} className="plate" href={url} target="_blank" rel="noopener">
+              <div key={p.id} className="plate">
                 <time className="plate-date mute" dateTime={p.date}>
                   {p.date.slice(0, 4)}
                 </time>
-                {p.thumbnail ? (
-                  <figure>
-                    <img src={p.thumbnail} alt={`${p.title}: ${p.tagline}`} loading="lazy" />
-                  </figure>
-                ) : (
-                  <figure aria-hidden="true" />
-                )}
+                <a className="plate-shot" href={url} target="_blank" rel="noopener" tabIndex={-1} aria-hidden="true">
+                  <figure>{p.thumbnail && <img src={p.thumbnail} alt="" loading="lazy" />}</figure>
+                </a>
                 <div className="body">
-                  <h3>{p.title}</h3>
+                  <h3>
+                    <a href={url} target="_blank" rel="noopener">
+                      {p.title}
+                    </a>
+                  </h3>
                   <p>{p.tagline}</p>
-                  <span className="meta mute">{p.kind}</span>
+                  <span className="meta mute">
+                    {p.kind} ·{" "}
+                    <Link to={`/works/${p.id}`} className="plate-more">
+                      {w.about}
+                    </Link>
+                  </span>
                 </div>
-              </a>
+              </div>
             );
           })
         )}

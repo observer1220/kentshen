@@ -55,7 +55,11 @@
     "works": {
       "heading": "作品",
       "search": "搜尋作品名稱或關鍵字",
-      "empty": "找不到符合的作品。"
+      "empty": "找不到符合的作品。",
+      "back": "← 作品",
+      "visit": "開啟網站",
+      "more": "其他作品",
+      "about": "介紹與教學 →"
     },
     "blog": {
       "heading": "Blog",
@@ -80,7 +84,8 @@
     "contact": {
       "heading": "聯絡",
       "lead": "產品回饋、合作、客製化，或只是想打聲招呼，都可以直接傳訊息給我。",
-      "backLabel": "← 返回"
+      "backLabel": "← 返回",
+      "mailLead": "也可以寄信給我："
     },
     "notFound": {
       "heading": "找不到這個頁面",

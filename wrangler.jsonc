@@ -13,7 +13,7 @@
     // unlisted path that has no file is a real 404 (dist/404.html, status 404) instead
     // of the home page with status 200, which Google files as a duplicate. Add a pattern here when
     // you add a new top-level page route.
-    "run_worker_first": ["/", "/index.html", "/blog", "/blog/*", "/contact", "/about", "/privacy"],
+    "run_worker_first": ["/", "/index.html", "/blog", "/blog/*", "/works/*", "/contact", "/about", "/privacy"],
     "not_found_handling": "404-page"
   },
   "routes": [{ "pattern": "kentshen.com", "custom_domain": true }]

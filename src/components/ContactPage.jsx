@@ -15,6 +15,10 @@ export default function ContactPage() {
       <h1 className="page-heading">{c.heading}</h1>
       <p className="contact-lead">{c.lead}</p>
       <SocialLinks variant="cards" />
+      <p className="contact-lead contact-mail">
+        {c.mailLead}
+        <a href="mailto:observer1220@gmail.com">observer1220@gmail.com</a>
+      </p>
     </section>
   );
 }
